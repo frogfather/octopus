@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="octopuschecker.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="22"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="octopus.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="octopusForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="91"/>
+        <CursorPos X="3" Y="112"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="/Library/Lazarus/lcl/include/customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="448"/>
+        <CursorPos X="94" Y="464"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/usr/local/share/fpcsrc/3.2.0/packages/fcl-web/src/base/fphttpclient.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1414"/>
+        <CursorPos X="19" Y="1427"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="23" HistoryIndex="22">
+      <Position1>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="27" Column="25" TopLine="13"/>
+      </Position1>
+      <Position2>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="70" Column="12" TopLine="52"/>
+      </Position2>
+      <Position3>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="74" Column="22" TopLine="71"/>
+      </Position3>
+      <Position4>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="77" TopLine="71"/>
+      </Position4>
+      <Position5>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="79" TopLine="71"/>
+      </Position5>
+      <Position6>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="81" TopLine="71"/>
+      </Position6>
+      <Position7>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="82" TopLine="71"/>
+      </Position7>
+      <Position8>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="83" TopLine="71"/>
+      </Position8>
+      <Position9>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="84" TopLine="71"/>
+      </Position9>
+      <Position10>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="85" TopLine="71"/>
+      </Position10>
+      <Position11>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="37" Column="20" TopLine="23"/>
+      </Position11>
+      <Position12>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="55" Column="28" TopLine="40"/>
+      </Position12>
+      <Position13>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="71" Column="117" TopLine="53"/>
+      </Position13>
+      <Position14>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="31" Column="17" TopLine="10"/>
+      </Position14>
+      <Position15>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="9" Column="18"/>
+      </Position15>
+      <Position16>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="108" Column="5" TopLine="91"/>
+      </Position16>
+      <Position17>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="106" Column="38" TopLine="90"/>
+      </Position17>
+      <Position18>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="113" Column="38" TopLine="97"/>
+      </Position18>
+      <Position19>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="61" Column="44" TopLine="54"/>
+      </Position19>
+      <Position20>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="113" Column="16" TopLine="97"/>
+      </Position20>
+      <Position21>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="112" TopLine="97"/>
+      </Position21>
+      <Position22>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="111" Column="28" TopLine="97"/>
+      </Position22>
+      <Position23>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="106" Column="18" TopLine="94"/>
+      </Position23>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <Watches Count="1">
+      <Item1>
+        <Expression Value="url"/>
+      </Item1>
+    </Watches>
+  </Debugging>
+</CONFIG>
