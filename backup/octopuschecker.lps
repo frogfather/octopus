@@ -11,7 +11,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="25"/>
       </Unit0>
       <Unit1>
         <Filename Value="octopus.pas"/>
@@ -20,9 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="91"/>
-        <CursorPos X="3" Y="112"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="71"/>
+        <CursorPos X="11" Y="81"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -41,7 +41,7 @@
         <UsageCount Value="10"/>
       </Unit3>
     </Units>
-    <JumpHistory Count="23" HistoryIndex="22">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="octopus.pas"/>
         <Caret Line="27" Column="25" TopLine="13"/>
@@ -134,6 +134,18 @@
         <Filename Value="octopus.pas"/>
         <Caret Line="106" Column="18" TopLine="94"/>
       </Position23>
+      <Position24>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="112" Column="7" TopLine="96"/>
+      </Position24>
+      <Position25>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="9" Column="49"/>
+      </Position25>
+      <Position26>
+        <Filename Value="octopus.pas"/>
+        <Caret Line="77" Column="61" TopLine="64"/>
+      </Position26>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

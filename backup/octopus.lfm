@@ -7,7 +7,7 @@ object octopusForm: ToctopusForm
   ClientHeight = 310
   ClientWidth = 879
   OnShow = FormShow
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.0.12.0'
   object bSave: TButton
     Left = 792
     Height = 25
@@ -20,7 +20,7 @@ object octopusForm: ToctopusForm
   end
   object tePoll: TTimeEdit
     Left = 664
-    Height = 22
+    Height = 36
     Top = 267
     Width = 103
     ButtonWidth = 23
@@ -42,8 +42,8 @@ object octopusForm: ToctopusForm
     OptimalFill = True
   end
   object eapi: TEdit
-    Left = 60
-    Height = 22
+    Left = 64
+    Height = 36
     Top = 267
     Width = 572
     OnExit = tePollEditingDone
@@ -51,9 +51,9 @@ object octopusForm: ToctopusForm
   end
   object lat: TLabel
     Left = 640
-    Height = 16
+    Height = 19
     Top = 270
-    Width = 12
+    Width = 13
     Caption = 'at'
     ParentColor = False
   end
@@ -63,7 +63,9 @@ object octopusForm: ToctopusForm
     Top = 32
     Width = 780
     ItemHeight = 0
+    ScrollWidth = 778
     TabOrder = 3
+    TopIndex = -1
   end
   object bPoll: TButton
     Left = 763
