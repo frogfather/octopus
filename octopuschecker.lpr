@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, octopus
+  Forms, octopus, dm
   { you can add units after this };
 
 {$R *.res}
@@ -17,6 +17,7 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(ToctopusForm, octopusForm);
+  Application.CreateForm(Tdm1, dm1);
   Application.Run;
 end.
 

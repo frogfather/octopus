@@ -1,11 +1,11 @@
 object octopusForm: ToctopusForm
-  Left = 240
+  Left = 317
   Height = 310
   Top = 196
-  Width = 879
+  Width = 886
   Caption = 'Octopus'
   ClientHeight = 310
-  ClientWidth = 879
+  ClientWidth = 886
   OnShow = FormShow
   LCLVersion = '2.0.12.0'
   object bSave: TButton

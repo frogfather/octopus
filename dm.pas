@@ -1,0 +1,89 @@
+unit dm;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, PQConnection, SQLDB, fpjson, jsonparser, dateutils;
+
+type
+
+  { Tdm1 }
+
+  Tdm1 = class(TDataModule)
+    pqConn: TPQConnection;
+    sqlLookup: TSQLQuery;
+    sqlAdd: TSQLQuery;
+    sqlTrans: TSQLTransaction;
+  private
+    procedure  setParameterAndQuery(pName: string; pValue: TDateTime);
+  public
+    function saveFromJson(data: TJSONObject):boolean;
+  end;
+
+var
+  dm1: Tdm1;
+
+implementation
+
+{$R *.lfm}
+
+{ Tdm1 }
+
+procedure Tdm1.setParameterAndQuery(pName: string; pValue: TDateTime);
+begin
+  if (sqlLookup.Params.Count > 0) then
+    begin
+    sqlLookup.Params.ParamByName(pName).AsDateTime:=pValue;
+    sqlLookup.ExecSQL;
+    end;
+end;
+
+function Tdm1.saveFromJson(data: TJSONObject): boolean;
+var
+  resultArray: TJSONArray;
+  resultIndex: integer;
+  resultItem: TJSONObject;
+  validFrom,validTo: String;
+  exVat, incVat: double;
+  dValidFrom, dValidTo: TDatetime;
+begin
+  if(data.IndexOfName('results') > -1) and not (data.FindPath('results').IsNull) then
+  //should be an array
+    try
+      resultArray:=data.Arrays['results'];
+      sqlLookup.SQL.Text:='SELECT * FROM tariff where valid_from=:VALIDFROM';
+      sqlAdd.SQL.Text:='INSERT into tariff (valid_from, valid_to, ex_vat, inc_vat) values (:V_FROM, :V_TO, :EX_VAT, :INC_VAT)';
+      for resultIndex := 0 to resultArray.Count -1 do
+        begin
+          resultItem:=TJSONObject(resultArray[resultIndex]);
+          validFrom:=resultItem.Get('valid_from');
+          validTo:=resultItem.Get('valid_to');
+          exVat:= resultItem.Get('value_exc_vat');
+          incVat:= resultItem.Get('value_inc_vat');
+          TryISOStrToDateTime(validFrom, dValidFrom);
+          TryISOStrToDateTime(validTo, dValidTo);
+          sqlLookup.Params.ParamByName('VALIDFROM').AsDateTime:=dValidFrom;
+          sqlLookup.ExecSQL;
+          if sqlLookup.recordCount = 0 then
+            begin
+            sqlAdd.params.ParamByName('V_FROM').AsDateTime:=dValidFrom;
+            sqlAdd.params.ParamByName('V_TO').AsDateTime:=dValidTo;
+            sqlAdd.params.ParamByName('EX_VAT').AsFloat :=exVat;
+            sqlAdd.params.ParamByName('INC_VAT').AsFloat:=incVat;
+            sqlAdd.ExecSQL;
+            sqlTrans.Commit;
+            end;
+        end;
+      result:=true;
+    except
+      on E: Exception do
+      result:=false;
+    end;
+
+end;
+
+
+end.
+

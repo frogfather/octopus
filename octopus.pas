@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, MaskEdit,
-  EditBtn, fphttpclient, opensslsockets, fpjson, jsonparser;
+  EditBtn, fphttpclient, opensslsockets, fpjson, jsonparser, dm;
 
 type
 
@@ -47,7 +47,7 @@ implementation
 procedure ToctopusForm.FormShow(Sender: TObject);
 
 begin
-  fileName:='/Users/cloudsoft/Code/octopus/settings.csv';
+  fileName:='/home/johncampbell/Documents/coding/object_pascal/octopus/octopus/settings.csv';
   readSettings;
 end;
 
@@ -61,27 +61,11 @@ var
   results: String;
   jData : TJSONData;
   jObject : TJSONObject;
-  resultArray: TJSONArray;
-  resultItem: TJSONObject;
-  resultIndex: integer;
 begin
   results:=queryApi(eapi.text);
   jData := GetJSON(results);
   jObject := TJSONObject(jData);
-  if(jObject.IndexOfName('results') > -1) and not (jObject.FindPath('results').IsNull) then
-  //should be an array
-    begin
-      resultArray:=jObject.Arrays['results'];
-      for resultIndex := 0 to resultArray.Count -1 do
-        begin
-          resultItem:=TJSONObject(resultArray[resultIndex]);
-          lbresults.Items.add('Value exc vat: '+formatFloat('0.00',resultItem.Get('value_exc_vat')));
-          lbresults.Items.add('Value inc vat: '+formatFloat('0.00',resultItem.Get('value_inc_vat')));
-          lbresults.Items.add('Valid from: '+resultItem.Get('valid_from'));
-          lbresults.Items.add('Valid to: '+resultItem.Get('valid_to'));
-          lbresults.Items.Add('---------------------');
-        end;
-    end;
+  dm1.saveFromJson(jObject);
 end;
 
 procedure ToctopusForm.tePollEditingDone(Sender: TObject);
