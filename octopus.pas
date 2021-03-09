@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, MaskEdit,
-  EditBtn, fphttpclient, opensslsockets, fpjson, jsonparser, dm;
+  EditBtn, ExtCtrls, fphttpclient, opensslsockets, fpjson, jsonparser, dm;
 
 type
 
@@ -17,19 +17,24 @@ type
     bSave: TButton;
     bPoll: TButton;
     eapi: TEdit;
+    eNextPoll: TEdit;
+    lNextPoll: TLabel;
     lat: TLabel;
     lbResults: TListBox;
     lPoll: TLabel;
     tePoll: TTimeEdit;
+    Timer1: TTimer;
     procedure bPollClick(Sender: TObject);
     procedure bSaveClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure tePollEditingDone(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     function readStream(fnam: string): string;
     procedure writeStream(fnam: string; txt: string);
     procedure readSettings;
     procedure writeSettings;
+    procedure pollAndSave(api: string);
     function queryApi(api: string):string;
   public
 
@@ -54,23 +59,30 @@ end;
 procedure ToctopusForm.bSaveClick(Sender: TObject);
 begin
   writeSettings;
+  timer1.Enabled:=true;
 end;
 
 procedure ToctopusForm.bPollClick(Sender: TObject);
-var
-  results: String;
-  jData : TJSONData;
-  jObject : TJSONObject;
 begin
-  results:=queryApi(eapi.text);
-  jData := GetJSON(results);
-  jObject := TJSONObject(jData);
-  dm1.saveFromJson(jObject);
+  pollAndSave(eapi.Text);
 end;
 
 procedure ToctopusForm.tePollEditingDone(Sender: TObject);
 begin
   bSave.Enabled:= (tePoll.Text <> '') and (eapi.Text <> '');
+end;
+
+procedure ToctopusForm.Timer1Timer(Sender: TObject);
+begin
+  if (tePoll.Time = now) then
+    begin
+    eNextPoll.Text:='Polling';
+    pollAndSave(eapi.Text);
+    end else
+    begin
+
+    //eNextPoll.Text:=IntToStr(tePoll.time - );
+    end;
 end;
 
 procedure ToctopusForm.readSettings;
@@ -106,6 +118,18 @@ begin
   end;
   settings:= 'poll-time,'+apiPollString+#$0A+'url,'+eapi.text;
   writeStream(fileName, settings);
+end;
+
+procedure ToctopusForm.pollAndSave(api: string);
+var
+  results: String;
+  jData : TJSONData;
+  jObject : TJSONObject;
+begin
+  results:=queryApi(api);
+  jData := GetJSON(results);
+  jObject := TJSONObject(jData);
+  dm1.saveFromJson(jObject);
 end;
 
 function ToctopusForm.queryApi(api: string): string;
