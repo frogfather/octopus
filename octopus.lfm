@@ -2,16 +2,16 @@ object octopusForm: ToctopusForm
   Left = 317
   Height = 364
   Top = 147
-  Width = 886
+  Width = 1058
   Caption = 'Octopus'
   ClientHeight = 364
-  ClientWidth = 886
+  ClientWidth = 1058
   OnShow = FormShow
   LCLVersion = '2.0.12.0'
   object bSave: TButton
-    Left = 776
-    Height = 25
-    Top = 309
+    Left = 944
+    Height = 28
+    Top = 312
     Width = 75
     Caption = 'Save'
     Enabled = False
@@ -19,9 +19,9 @@ object octopusForm: ToctopusForm
     TabOrder = 0
   end
   object tePoll: TTimeEdit
-    Left = 664
-    Height = 36
-    Top = 304
+    Left = 832
+    Height = 22
+    Top = 315
     Width = 103
     ButtonWidth = 23
     NumGlyphs = 1
@@ -30,9 +30,9 @@ object octopusForm: ToctopusForm
     TabOrder = 1
   end
   object lPoll: TLabel
-    Left = 8
+    Left = 48
     Height = 16
-    Top = 313
+    Top = 315
     Width = 30
     AutoSize = False
     Caption = 'Poll'
@@ -42,18 +42,18 @@ object octopusForm: ToctopusForm
     OptimalFill = True
   end
   object eapi: TEdit
-    Left = 40
-    Height = 36
-    Top = 304
-    Width = 596
+    Left = 88
+    Height = 22
+    Top = 315
+    Width = 716
     OnExit = tePollEditingDone
     TabOrder = 2
   end
   object lat: TLabel
-    Left = 640
-    Height = 19
-    Top = 313
-    Width = 13
+    Left = 808
+    Height = 16
+    Top = 321
+    Width = 12
     Caption = 'at'
     ParentColor = False
   end
@@ -61,34 +61,40 @@ object octopusForm: ToctopusForm
     Left = 40
     Height = 216
     Top = 69
-    Width = 816
+    Width = 984
     ItemHeight = 0
-    ScrollWidth = 814
     TabOrder = 3
-    TopIndex = -1
   end
   object bPoll: TButton
-    Left = 781
+    Left = 941
     Height = 32
-    Top = 26
+    Top = 24
     Width = 75
     Caption = 'Poll now'
     OnClick = bPollClick
     TabOrder = 4
   end
   object eNextPoll: TEdit
-    Left = 664
-    Height = 36
-    Top = 24
-    Width = 103
+    Left = 755
+    Height = 22
+    Top = 28
+    Width = 114
     TabOrder = 5
   end
   object lNextPoll: TLabel
-    Left = 576
-    Height = 19
-    Top = 39
-    Width = 73
+    Left = 672
+    Height = 16
+    Top = 31
+    Width = 68
     Caption = 'Next poll in'
+    ParentColor = False
+  end
+  object lSeconds: TLabel
+    Left = 878
+    Height = 16
+    Top = 31
+    Width = 51
+    Caption = 'seconds'
     ParentColor = False
   end
   object Timer1: TTimer

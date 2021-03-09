@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, MaskEdit,
-  EditBtn, ExtCtrls, fphttpclient, opensslsockets, fpjson, jsonparser, dm;
+  EditBtn, ExtCtrls, fphttpclient, opensslsockets, fpjson, jsonparser, dm, dateutils;
 
 type
 
@@ -18,6 +18,7 @@ type
     bPoll: TButton;
     eapi: TEdit;
     eNextPoll: TEdit;
+    lSeconds: TLabel;
     lNextPoll: TLabel;
     lat: TLabel;
     lbResults: TListBox;
@@ -50,9 +51,8 @@ implementation
 { ToctopusForm }
 
 procedure ToctopusForm.FormShow(Sender: TObject);
-
 begin
-  fileName:='/home/johncampbell/Documents/coding/object_pascal/octopus/octopus/settings.csv';
+  fileName:='/Users/cloudsoft/Code/octopus/settings.csv';
   readSettings;
 end;
 
@@ -73,15 +73,18 @@ begin
 end;
 
 procedure ToctopusForm.Timer1Timer(Sender: TObject);
+var
+  span: Integer;
+  nextPollTime: TDatetime;
 begin
-  if (tePoll.Time = now) then
+  //if the poll time is before timeof now add a day to it
+  if (timeOf(now) > tePoll.time) then nextPollTime:= incDay(tePoll.time) else nextPollTime:=tePoll.time;
+  span:=secondsBetween(nextPollTime, timeOf(now));
+  enextpoll.text:=inttostr(span);
+  if (span = 0) then
     begin
     eNextPoll.Text:='Polling';
     pollAndSave(eapi.Text);
-    end else
-    begin
-
-    //eNextPoll.Text:=IntToStr(tePoll.time - );
     end;
 end;
 
@@ -100,6 +103,7 @@ begin
     try
       eapi.text := lines[1].split(',')[1];
       tePoll.Time:=StrToDateTime(lines[0].split(',')[1]);
+      timer1.Enabled:=true;
     except
       on e: Exception do messagedlg('','Oops '+e.Message, mtError, [mbOK],'');
     end;
@@ -129,7 +133,7 @@ begin
   results:=queryApi(api);
   jData := GetJSON(results);
   jObject := TJSONObject(jData);
-  dm1.saveFromJson(jObject);
+  lbresults.items.add('Added '+inttostr(dm1.saveFromJson(jObject))+' records');
 end;
 
 function ToctopusForm.queryApi(api: string): string;

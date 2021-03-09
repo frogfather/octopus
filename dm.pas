@@ -19,7 +19,7 @@ type
   private
     procedure  setParameterAndQuery(pName: string; pValue: TDateTime);
   public
-    function saveFromJson(data: TJSONObject):boolean;
+    function saveFromJson(data: TJSONObject):integer;
   end;
 
 var
@@ -40,7 +40,7 @@ begin
     end;
 end;
 
-function Tdm1.saveFromJson(data: TJSONObject): boolean;
+function Tdm1.saveFromJson(data: TJSONObject): integer;
 var
   resultArray: TJSONArray;
   resultIndex: integer;
@@ -48,8 +48,9 @@ var
   validFrom,validTo: String;
   exVat, incVat: double;
   dValidFrom, dValidTo: TDatetime;
-  test: string;
+  recordCount: integer;
 begin
+  recordCount:=0;
   if(data.IndexOfName('results') > -1) and not (data.FindPath('results').IsNull) then
   //should be an array
     try
@@ -75,16 +76,17 @@ begin
             sqlAdd.params.ParamByName('INC_VAT').AsFloat:=incVat;
             sqlAdd.ExecSQL;
             sqlTrans.Commit;
+            recordCount:=recordCount+1;
             end;
         end;
-      result:=true;
     except
       on E: Exception do
-      result:=false;
+      begin
+        //something
+      end;
     end;
-
+    result:=recordCount;
 end;
-
 
 end.
 

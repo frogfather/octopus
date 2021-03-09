@@ -5,19 +5,19 @@ object dm1: Tdm1
   VerticalOffset = 165
   Width = 369
   object pqConn: TPQConnection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     DatabaseName = 'octopus'
     KeepConnection = False
     Password = 'tigger'
     Transaction = sqlTrans
     UserName = 'john'
-    HostName = '127.0.0.1'
+    HostName = '192.168.0.24'
     Left = 44
     Top = 27
   end
   object sqlTrans: TSQLTransaction
-    Active = True
+    Active = False
     Database = pqConn
     Left = 45
     Top = 98
