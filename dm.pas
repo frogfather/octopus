@@ -48,12 +48,12 @@ var
   validFrom,validTo: String;
   exVat, incVat: double;
   dValidFrom, dValidTo: TDatetime;
+  test: string;
 begin
   if(data.IndexOfName('results') > -1) and not (data.FindPath('results').IsNull) then
   //should be an array
     try
       resultArray:=data.Arrays['results'];
-      sqlLookup.SQL.Text:='SELECT * FROM tariff where valid_from=:VALIDFROM';
       sqlAdd.SQL.Text:='INSERT into tariff (valid_from, valid_to, ex_vat, inc_vat) values (:V_FROM, :V_TO, :EX_VAT, :INC_VAT)';
       for resultIndex := 0 to resultArray.Count -1 do
         begin
@@ -64,8 +64,9 @@ begin
           incVat:= resultItem.Get('value_inc_vat');
           TryISOStrToDateTime(validFrom, dValidFrom);
           TryISOStrToDateTime(validTo, dValidTo);
-          sqlLookup.Params.ParamByName('VALIDFROM').AsDateTime:=dValidFrom;
-          sqlLookup.ExecSQL;
+          sqlLookup.Active:=false;
+          sqlLookup.SQL.Text:='SELECT * FROM tariff where valid_from = '''+formatDateTime('yyyy-mm-dd hh:nn:ss',dValidFrom)+'''';
+          sqlLookup.Active:=true;
           if sqlLookup.recordCount = 0 then
             begin
             sqlAdd.params.ParamByName('V_FROM').AsDateTime:=dValidFrom;
