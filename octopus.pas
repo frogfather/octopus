@@ -6,10 +6,10 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, MaskEdit,
-  EditBtn, ExtCtrls, fphttpclient, opensslsockets, fpjson, jsonparser, dm, dateutils;
+  EditBtn, ExtCtrls, fphttpclient, opensslsockets, fpjson, jsonparser, dm, dateutils, entityUtils, tariff;
 
 type
-
+  TariffEM = TEntityListManager;
   TStringArray = Array of string;
   { ToctopusForm }
 
@@ -27,6 +27,7 @@ type
     Timer1: TTimer;
     procedure bPollClick(Sender: TObject);
     procedure bSaveClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure tePollEditingDone(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -44,6 +45,7 @@ type
 var
   octopusForm: ToctopusForm;
   fileName: string;
+  tariffs: TariffEM;
 implementation
 
 {$R *.lfm}
@@ -60,6 +62,12 @@ procedure ToctopusForm.bSaveClick(Sender: TObject);
 begin
   writeSettings;
   timer1.Enabled:=true;
+end;
+
+procedure ToctopusForm.FormCreate(Sender: TObject);
+begin
+  DefaultFormatSettings.ShortDateFormat := 'yyyy-mm-dd';
+  Tariffs := TariffEM.create;
 end;
 
 procedure ToctopusForm.bPollClick(Sender: TObject);
@@ -128,12 +136,27 @@ procedure ToctopusForm.pollAndSave(api: string);
 var
   results: String;
   jData : TJSONData;
-  jObject : TJSONObject;
+  jObject,jTariffItem : TJSONObject;
+  resultArray: TJSONArray;
+  resultIndex: Integer;
+  id: TGUID;
+  newTariff:TTariff;
 begin
   results:=queryApi(api);
   jData := GetJSON(results);
   jObject := TJSONObject(jData);
-  lbresults.items.add('Added '+inttostr(dm1.saveFromJson(jObject))+' records');
+  resultArray:=jObject.Arrays['results'];
+  for resultIndex := 0 to resultArray.Count - 1 do
+    begin
+    createGuid(id);
+    jTariffItem := TJSONObject(resultArray[resultIndex]);
+    jTariffItem.Add('entityId', GuidToString(id));
+    JTariffItem.Add('entityType','TTariff');
+    newTariff:=TTariff.create(jTariffItem);
+    tariffs.AddEntity(newTariff);
+    end;
+  lbresults.items.add('There are '+inttostr(tariffs.Count)+' tariff objects ');
+  //lbresults.items.add('Added '+inttostr(dm1.saveFromJson(jObject))+' records');
 end;
 
 function ToctopusForm.queryApi(api: string): string;
