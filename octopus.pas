@@ -43,6 +43,9 @@ type
     procedure pollAndSave;
     function queryApi(api: string):string;
     procedure processOctopusData(data: TJSONObject);
+    function getOctopusAgile: string;
+    function getOpenWeatherCurrent: string;
+    function getOpenWeatherForecast: string;
   public
 
   end;
@@ -163,10 +166,17 @@ var
   jData : TJSONData;
   jObject : TJSONObject;
 begin
-  results:=queryApi(eOctopusApi.Text);
+  //Get Octopus data first
+  results:=getOctopusAgile;
   jData := GetJSON(results);
   jObject := TJSONObject(jData);
   processOctopusData(jObject);
+  //Open weather current
+
+  results:=getOpenWeatherCurrent;
+  //Open weather forecast
+
+  results:=getOpenWeatherForecast;
 end;
 
 function ToctopusForm.queryApi(api: string): string;
@@ -207,6 +217,21 @@ begin
     tariffs.AddEntity(newTariff);
     end;
   lbresults.items.add('Added '+inttostr(dm1.saveFromJson(data))+' records');
+end;
+
+function ToctopusForm.getOctopusAgile: string;
+begin
+  result:= queryApi(eOctopusApi.Text);
+end;
+
+function ToctopusForm.getOpenWeatherCurrent: string;
+begin
+  result:= queryApi(eOpenWeatherApi.text+'weather?q='+eOpenWeatherCity.text+'&appid='+eOpenWeatherApiKey.text);
+end;
+
+function ToctopusForm.getOpenWeatherForecast: string;
+begin
+  result:= queryApi(eOpenWeatherApi.text+'forecast?q='+eOpenWeatherCity.text+'&appid='+eOpenWeatherApiKey.text);
 end;
 
 function ToctopusForm.readStream(fnam: string): string;
