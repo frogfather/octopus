@@ -16,8 +16,14 @@ type
   ToctopusForm = class(TForm)
     bSave: TButton;
     bPoll: TButton;
-    eapi: TEdit;
+    eOpenWeatherCity: TEdit;
+    eOctopusApi: TEdit;
     eNextPoll: TEdit;
+    eOpenWeatherApi: TEdit;
+    eOpenWeatherApiKey: TEdit;
+    lOpenWeatherApi: TLabel;
+    lOpenWeatherCity: TLabel;
+    lOpenWeatherApiKey: TLabel;
     lSeconds: TLabel;
     lNextPoll: TLabel;
     lat: TLabel;
@@ -72,12 +78,12 @@ end;
 
 procedure ToctopusForm.bPollClick(Sender: TObject);
 begin
-  pollAndSave(eapi.Text);
+  pollAndSave(eOctopusApi.Text);
 end;
 
 procedure ToctopusForm.tePollEditingDone(Sender: TObject);
 begin
-  bSave.Enabled:= (tePoll.Text <> '') and (eapi.Text <> '');
+  bSave.Enabled:= (tePoll.Text <> '') and (eOctopusApi.Text <> '');
 end;
 
 procedure ToctopusForm.Timer1Timer(Sender: TObject);
@@ -92,7 +98,7 @@ begin
   if (span = 0) then
     begin
     eNextPoll.Text:='Polling';
-    pollAndSave(eapi.Text);
+    pollAndSave(eOctopusApi.Text);
     end;
 end;
 
@@ -100,6 +106,8 @@ procedure ToctopusForm.readSettings;
 var
   contents: string;
   lines: TStringArray;
+  lineNo:integer;
+  key,value:string;
 begin
   if FileExists(fileName) then
   begin
@@ -109,9 +117,20 @@ begin
     //get the poll time setting and the api setting
     if (length(lines) > 1) then
     try
-      eapi.text := lines[1].split(',')[1];
-      tePoll.Time:=StrToDateTime(lines[0].split(',')[1]);
-      timer1.Enabled:=true;
+      for lineNo := 0 to length(lines)-1 do
+        begin
+        key:=lines[lineNo].split(',')[0];
+        value:=lines[lineNo].split(',')[1];
+          case key of
+          'poll-time': tePoll.time:=strToDateTime(value);
+          'octopus-api': eOctopusApi.Text:=value;
+          'open-weather-api': eOpenWeatherApi.Text:=value;
+          'open-weather-city': eOpenWeatherCity.Text:=value;
+          'open-weather-api-key': eOpenWeatherApiKey.Text:=value;
+          end;
+        end;
+      //TODO check it's a valid url rather than just checking if it's not empty
+      timer1.Enabled:=(length(eOctopusApi.text) > 0) or (length(eOpenWeatherApi.Text)> 0);
     except
       on e: Exception do messagedlg('','Oops '+e.Message, mtError, [mbOK],'');
     end;
@@ -128,7 +147,11 @@ begin
   except
     apiPollString:=formatDateTime('hh:nn:ss',now);
   end;
-  settings:= 'poll-time,'+apiPollString+#$0A+'url,'+eapi.text;
+  settings:= 'poll-time,'+apiPollString
+  +#$0A+'octopus-api,'+eOctopusApi.text
+  +#$0A+'open-weather-api,'+eOpenWeatherApi.text
+  +#$0A+'open-weather-city,'+eOpenWeatherCity.text
+  +#$0A+'open-weather-api-key,'+eOpenWeatherApiKey.text;
   writeStream(fileName, settings);
 end;
 
@@ -156,7 +179,8 @@ begin
     tariffs.AddEntity(newTariff);
     end;
   lbresults.items.add('There are '+inttostr(tariffs.Count)+' tariff objects ');
-  //lbresults.items.add('Added '+inttostr(dm1.saveFromJson(jObject))+' records');
+  //TODO - use these objects for database sync
+  lbresults.items.add('Added '+inttostr(dm1.saveFromJson(jObject))+' records');
 end;
 
 function ToctopusForm.queryApi(api: string): string;
