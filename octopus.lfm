@@ -1,27 +1,27 @@
 object octopusForm: ToctopusForm
   Left = 317
-  Height = 364
+  Height = 448
   Top = 147
   Width = 1058
   Caption = 'Octopus'
-  ClientHeight = 364
+  ClientHeight = 448
   ClientWidth = 1058
+  OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.12.0'
   object bSave: TButton
-    Left = 944
-    Height = 28
-    Top = 312
+    Left = 941
+    Height = 30
+    Top = 408
     Width = 75
     Caption = 'Save'
-    Enabled = False
     OnClick = bSaveClick
     TabOrder = 0
   end
   object tePoll: TTimeEdit
-    Left = 832
+    Left = 520
     Height = 22
-    Top = 315
+    Top = 28
     Width = 103
     ButtonWidth = 23
     NumGlyphs = 1
@@ -32,29 +32,29 @@ object octopusForm: ToctopusForm
   object lPoll: TLabel
     Left = 48
     Height = 16
-    Top = 315
-    Width = 30
+    Top = 300
+    Width = 78
     AutoSize = False
-    Caption = 'Poll'
+    Caption = 'Octopus api'
     Font.Height = 13
     ParentColor = False
     ParentFont = False
     OptimalFill = True
   end
-  object eapi: TEdit
-    Left = 88
+  object eOctopusApi: TEdit
+    Left = 40
     Height = 22
-    Top = 315
-    Width = 716
+    Top = 320
+    Width = 889
     OnExit = tePollEditingDone
     TabOrder = 2
   end
   object lat: TLabel
-    Left = 808
+    Left = 456
     Height = 16
-    Top = 321
-    Width = 12
-    Caption = 'at'
+    Top = 31
+    Width = 52
+    Caption = 'Poll time'
     ParentColor = False
   end
   object lbResults: TListBox
@@ -67,35 +67,79 @@ object octopusForm: ToctopusForm
   end
   object bPoll: TButton
     Left = 941
-    Height = 32
-    Top = 24
+    Height = 38
+    Top = 20
     Width = 75
     Caption = 'Poll now'
     OnClick = bPollClick
     TabOrder = 4
   end
   object eNextPoll: TEdit
-    Left = 755
+    Left = 640
     Height = 22
     Top = 28
-    Width = 114
+    Width = 288
     TabOrder = 5
   end
-  object lNextPoll: TLabel
-    Left = 672
-    Height = 16
-    Top = 31
-    Width = 68
-    Caption = 'Next poll in'
-    ParentColor = False
+  object eOpenWeatherApi: TEdit
+    Left = 40
+    Height = 22
+    Top = 368
+    Width = 889
+    OnExit = tePollEditingDone
+    TabOrder = 6
   end
-  object lSeconds: TLabel
-    Left = 878
+  object lOpenWeatherApi: TLabel
+    Left = 48
     Height = 16
-    Top = 31
-    Width = 51
-    Caption = 'seconds'
+    Top = 350
+    Width = 120
+    AutoSize = False
+    Caption = 'Open Weather Api'
+    Font.Height = 13
     ParentColor = False
+    ParentFont = False
+    OptimalFill = True
+  end
+  object eOpenWeatherCity: TEdit
+    Left = 40
+    Height = 22
+    Top = 416
+    Width = 256
+    TabOrder = 7
+  end
+  object lOpenWeatherCity: TLabel
+    Left = 48
+    Height = 16
+    Top = 400
+    Width = 120
+    AutoSize = False
+    Caption = 'Open Weather City'
+    Font.Height = 13
+    ParentColor = False
+    ParentFont = False
+    OptimalFill = True
+  end
+  object eOpenWeatherApiKey: TEdit
+    Left = 328
+    Height = 22
+    Top = 416
+    Width = 256
+    EchoMode = emPassword
+    PasswordChar = '*'
+    TabOrder = 8
+  end
+  object lOpenWeatherApiKey: TLabel
+    Left = 336
+    Height = 16
+    Top = 400
+    Width = 168
+    AutoSize = False
+    Caption = 'Open Weather Api Key'
+    Font.Height = 13
+    ParentColor = False
+    ParentFont = False
+    OptimalFill = True
   end
   object Timer1: TTimer
     Enabled = False

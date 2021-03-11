@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="5">
       <Unit0>
         <Filename Value="octopuschecker.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -52,6 +52,15 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="entityutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="entityUtils"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="tariff.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
