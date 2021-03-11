@@ -1,0 +1,2 @@
+Utility to retrieve and persist pricing data for Octopus Energy's Agile tariff and weather information from OpenWeather. 
+At this stage it's to build some historical pricing and weather data which can be used to optimise savings on energy tariffs.
