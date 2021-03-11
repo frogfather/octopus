@@ -5,8 +5,8 @@ unit tariff;
 interface
 
 uses
-  Classes, SysUtils, fpjson, jsonparser, entityUtils, dateUtils;
-
+  Classes, SysUtils, fpjson, jsonparser, entityUtils, dateUtils, sqlDB;
+{TTariff - represents tariff data}
 type
   TTariff = class(TEntity)
   private
@@ -18,6 +18,8 @@ type
     constructor Create; overload;
     constructor Create(tariffItem: TJSONObject); overload;
     destructor Destroy; override;
+    function getFindSql:string; override;
+    function writeToDatabase(sqlQuery: TSQLQuery):boolean; override;
   published
     property ValidFrom: TDateTime read FValidFrom write FValidFrom;
     property ValidTo: TDateTime read FValidTo write FValidTo;
@@ -48,6 +50,20 @@ end;
 destructor TTariff.Destroy;
 begin
 
+end;
+
+function TTariff.getFindSql: string;
+begin
+  result:='SELECT * FROM tariff where valid_from = '''+formatDateTime('yyyy-mm-dd hh:nn:ss',FValidFrom)+'''';
+end;
+
+function TTariff.writeToDatabase(sqlQuery: TSQLQuery): boolean;
+begin
+  sqlQuery.params.ParamByName('V_FROM').AsDateTime:=FValidFrom;
+  sqlQuery.params.ParamByName('V_TO').AsDateTime:=FValidTo;
+  sqlQuery.params.ParamByName('EX_VAT').AsFloat :=FexVat;
+  sqlQuery.params.ParamByName('INC_VAT').AsFloat:=FincVat;
+  sqlQuery.ExecSQL;
 end;
 
 

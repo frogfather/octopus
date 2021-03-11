@@ -5,7 +5,7 @@ unit entityUtils;
 interface
 
 uses
-  Classes, SysUtils, fgl, fpjson, jsonparser;
+  Classes, SysUtils, fgl, fpjson, jsonparser, sqlDb;
 
 { IEntity }
   //This is the interface that all the entities implement
@@ -14,6 +14,8 @@ uses
     ['{0C8F4C5D-1898-4F24-91DA-63F1DD66A692}']
     function getType: String;
     function getId: String;
+    function getFindSql: String;
+    function writeToDatabase(query: TSQLQuery):boolean;
   end;
 
 type
@@ -25,9 +27,11 @@ type
   //This contains an EntityList and handles adding, deleting and finding entities
   TEntityListManager = class
   strict private
+    FAddSql: string;
     FEntities: TIEntityList;
   public
     constructor Create; overload;
+    constructor Create(addSql: string);
     destructor Destroy; override;
     procedure AddEntity(const AEntity: IEntity);
     procedure RemoveEntity(const AEntity: IEntity);
@@ -35,6 +39,7 @@ type
     function FindById(const id:String): IEntity;
     function FindPositionById(const id:String): integer;
     function Count: integer;
+    property AddSql: string read FAddSql;
   end;
 
 type
@@ -46,9 +51,12 @@ type
     FEntityType: string;
     FEntityId: String;
   public
-    constructor Create(const inputObject: TJSONObject); reintroduce;
-    function GetType: String;
-    function GetId: String;
+    constructor create(const inputObject: TJSONObject); reintroduce;
+    constructor create(sqlQuery: TSqlQuery);
+    function getType: String;
+    function getId: String;
+    function writeToDatabase(sqlQuery: TSqlQuery): boolean; virtual; abstract;
+    function getFindSql: string; virtual; abstract;
   end;
 
 implementation
@@ -61,6 +69,11 @@ begin
   FEntityType:=inputObject.get('entityType');
 end;
 
+constructor TEntity.Create(sqlQuery: TSqlQuery);
+begin
+
+end;
+
 function TEntity.GetType: String;
 begin
   result:=FEntityType;
@@ -71,12 +84,20 @@ begin
   result:=FEntityId;
 end;
 
+
 { TEntityListManager }
 
 constructor TEntityListManager.Create;
 begin
   inherited Create;
   FEntities := TIEntityList.Create;
+end;
+
+constructor TEntityListManager.Create(addSql: string);
+begin
+  inherited Create;
+  FEntities := TIEntityList.Create;
+  FAddSql:=addSql;
 end;
 
 destructor TEntityListManager.Destroy;
@@ -135,6 +156,7 @@ begin
         end;
     end;
 end;
+
 
 end.
 

@@ -75,7 +75,7 @@ end;
 procedure ToctopusForm.FormCreate(Sender: TObject);
 begin
   DefaultFormatSettings.ShortDateFormat := 'yyyy-mm-dd';
-  Tariffs := TariffEM.create;
+  Tariffs := TariffEM.create('INSERT into tariff (valid_from, valid_to, ex_vat, inc_vat) values (:V_FROM, :V_TO, :EX_VAT, :INC_VAT)');
 end;
 
 procedure ToctopusForm.bPollClick(Sender: TObject);
@@ -216,7 +216,7 @@ begin
     newTariff:=TTariff.create(jTariffItem);
     tariffs.AddEntity(newTariff);
     end;
-  lbresults.items.add('Added '+inttostr(dm1.saveFromJson(data))+' records');
+  lbresults.items.add('Added '+inttostr(dm1.saveData(tariffs))+' records');
 end;
 
 function ToctopusForm.getOctopusAgile: string;
@@ -226,12 +226,12 @@ end;
 
 function ToctopusForm.getOpenWeatherCurrent: string;
 begin
-  result:= queryApi(eOpenWeatherApi.text+'weather?q='+eOpenWeatherCity.text+'&appid='+eOpenWeatherApiKey.text);
+  result:= queryApi('https://'+eOpenWeatherApi.text+'weather?q='+eOpenWeatherCity.text+'&appid='+eOpenWeatherApiKey.text);
 end;
 
 function ToctopusForm.getOpenWeatherForecast: string;
 begin
-  result:= queryApi(eOpenWeatherApi.text+'forecast?q='+eOpenWeatherCity.text+'&appid='+eOpenWeatherApiKey.text);
+  result:= queryApi('https://'+eOpenWeatherApi.text+'forecast?q='+eOpenWeatherCity.text+'&appid='+eOpenWeatherApiKey.text);
 end;
 
 function ToctopusForm.readStream(fnam: string): string;
