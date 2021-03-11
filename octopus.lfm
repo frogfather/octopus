@@ -67,35 +67,19 @@ object octopusForm: ToctopusForm
   end
   object bPoll: TButton
     Left = 941
-    Height = 32
-    Top = 24
+    Height = 38
+    Top = 20
     Width = 75
     Caption = 'Poll now'
     OnClick = bPollClick
     TabOrder = 4
   end
   object eNextPoll: TEdit
-    Left = 755
+    Left = 640
     Height = 22
     Top = 28
-    Width = 114
+    Width = 288
     TabOrder = 5
-  end
-  object lNextPoll: TLabel
-    Left = 672
-    Height = 16
-    Top = 31
-    Width = 68
-    Caption = 'Next poll in'
-    ParentColor = False
-  end
-  object lSeconds: TLabel
-    Left = 878
-    Height = 16
-    Top = 31
-    Width = 51
-    Caption = 'seconds'
-    ParentColor = False
   end
   object eOpenWeatherApi: TEdit
     Left = 40

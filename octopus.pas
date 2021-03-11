@@ -24,8 +24,6 @@ type
     lOpenWeatherApi: TLabel;
     lOpenWeatherCity: TLabel;
     lOpenWeatherApiKey: TLabel;
-    lSeconds: TLabel;
-    lNextPoll: TLabel;
     lat: TLabel;
     lbResults: TListBox;
     lPoll: TLabel;
@@ -42,8 +40,9 @@ type
     procedure writeStream(fnam: string; txt: string);
     procedure readSettings;
     procedure writeSettings;
-    procedure pollAndSave(api: string);
+    procedure pollAndSave;
     function queryApi(api: string):string;
+    procedure processOctopusData(data: TJSONObject);
   public
 
   end;
@@ -78,7 +77,7 @@ end;
 
 procedure ToctopusForm.bPollClick(Sender: TObject);
 begin
-  pollAndSave(eOctopusApi.Text);
+  pollAndSave;
 end;
 
 procedure ToctopusForm.tePollEditingDone(Sender: TObject);
@@ -88,17 +87,20 @@ end;
 
 procedure ToctopusForm.Timer1Timer(Sender: TObject);
 var
-  span: Integer;
-  nextPollTime: TDatetime;
+  secondsUntilPoll:integer;
+  nextPollTime,timeUntilPoll: TDatetime;
+
 begin
   //if the poll time is before timeof now add a day to it
   if (timeOf(now) > tePoll.time) then nextPollTime:= incDay(tePoll.time) else nextPollTime:=tePoll.time;
-  span:=secondsBetween(nextPollTime, timeOf(now));
-  enextpoll.text:=inttostr(span);
-  if (span = 0) then
+  secondsUntilPoll:=secondsBetween(nextPollTime, timeOf(now));
+  timeUntilPoll := nextPollTime - timeOf(now);
+  enextpoll.text:='Next poll in '+formatDateTime('hh:nn:ss', timeUntilPoll);
+  if (timer1.Enabled) then enextpoll.Color:=clLime else enextpoll.Color:=cldefault;
+  if (secondsUntilPoll = 0) then
     begin
     eNextPoll.Text:='Polling';
-    pollAndSave(eOctopusApi.Text);
+    pollAndSave;
     end;
 end;
 
@@ -155,32 +157,16 @@ begin
   writeStream(fileName, settings);
 end;
 
-procedure ToctopusForm.pollAndSave(api: string);
+procedure ToctopusForm.pollAndSave;
 var
   results: String;
   jData : TJSONData;
-  jObject,jTariffItem : TJSONObject;
-  resultArray: TJSONArray;
-  resultIndex: Integer;
-  id: TGUID;
-  newTariff:TTariff;
+  jObject : TJSONObject;
 begin
-  results:=queryApi(api);
+  results:=queryApi(eOctopusApi.Text);
   jData := GetJSON(results);
   jObject := TJSONObject(jData);
-  resultArray:=jObject.Arrays['results'];
-  for resultIndex := 0 to resultArray.Count - 1 do
-    begin
-    createGuid(id);
-    jTariffItem := TJSONObject(resultArray[resultIndex]);
-    jTariffItem.Add('entityId', GuidToString(id));
-    JTariffItem.Add('entityType','TTariff');
-    newTariff:=TTariff.create(jTariffItem);
-    tariffs.AddEntity(newTariff);
-    end;
-  lbresults.items.add('There are '+inttostr(tariffs.Count)+' tariff objects ');
-  //TODO - use these objects for database sync
-  lbresults.items.add('Added '+inttostr(dm1.saveFromJson(jObject))+' records');
+  processOctopusData(jObject);
 end;
 
 function ToctopusForm.queryApi(api: string): string;
@@ -200,6 +186,27 @@ begin
     http.free;
   end;
 
+end;
+
+procedure ToctopusForm.processOctopusData(data: TJSONObject);
+var
+  jTariffItem:TJSONObject;
+  resultArray: TJSONArray;
+  resultIndex: Integer;
+  id: TGUID;
+  newTariff:TTariff;
+begin
+  resultArray:=data.Arrays['results'];
+  for resultIndex := 0 to resultArray.Count - 1 do
+    begin
+    createGuid(id);
+    jTariffItem := TJSONObject(resultArray[resultIndex]);
+    jTariffItem.Add('entityId', GuidToString(id));
+    JTariffItem.Add('entityType','TTariff');
+    newTariff:=TTariff.create(jTariffItem);
+    tariffs.AddEntity(newTariff);
+    end;
+  lbresults.items.add('Added '+inttostr(dm1.saveFromJson(data))+' records');
 end;
 
 function ToctopusForm.readStream(fnam: string): string;
