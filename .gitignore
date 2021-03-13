@@ -1,0 +1,4 @@
+settings.csv
+backup/*
+lib/x86*
+octopuschecker

@@ -1,150 +1,551 @@
 object octopusForm: ToctopusForm
-  Left = 317
-  Height = 448
-  Top = 147
+  Left = 260
+  Height = 743
+  Top = 23
   Width = 1058
   Caption = 'Octopus'
-  ClientHeight = 448
+  ClientHeight = 743
   ClientWidth = 1058
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.12.0'
-  object bSave: TButton
-    Left = 941
-    Height = 30
-    Top = 408
-    Width = 75
-    Caption = 'Save'
-    OnClick = bSaveClick
+  object pDisplay: TPageControl
+    Left = 0
+    Height = 704
+    Top = 24
+    Width = 1058
+    TabStop = False
+    ActivePage = PWeather
+    TabIndex = 0
     TabOrder = 0
+    object PWeather: TTabSheet
+      Caption = 'Current weather'
+      ClientHeight = 674
+      ClientWidth = 1052
+      object pCurrentWeather: TPanel
+        Left = 24
+        Height = 592
+        Top = 32
+        Width = 1000
+        ClientHeight = 592
+        ClientWidth = 1000
+        TabOrder = 0
+        object pHeadline: TPanel
+          Left = 32
+          Height = 200
+          Top = 32
+          Width = 928
+          BevelInner = bvLowered
+          BevelWidth = 3
+          BorderWidth = 3
+          BorderStyle = bsSingle
+          ClientHeight = 198
+          ClientWidth = 926
+          TabOrder = 0
+          object lHeadline: TLabel
+            Left = 344
+            Height = 28
+            Top = 8
+            Width = 126
+            Caption = 'Weather for '
+            Font.Height = -24
+            ParentColor = False
+            ParentFont = False
+          end
+          object lSummary: TLabel
+            Left = 16
+            Height = 28
+            Top = 56
+            Width = 105
+            Caption = 'Summary:'
+            Font.Height = -24
+            ParentColor = False
+            ParentFont = False
+          end
+          object lDescription: TLabel
+            Left = 16
+            Height = 18
+            Top = 96
+            Width = 87
+            Caption = 'Description:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lTemperature: TLabel
+            Left = 320
+            Height = 28
+            Top = 56
+            Width = 132
+            Caption = 'temperature:'
+            Font.Height = -24
+            ParentColor = False
+            ParentFont = False
+          end
+          object lFeelsLike: TLabel
+            Left = 320
+            Height = 18
+            Top = 96
+            Width = 79
+            Caption = '(feels like:)'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lTempMin: TLabel
+            Left = 320
+            Height = 18
+            Top = 124
+            Width = 31
+            Caption = 'min:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lTempMax: TLabel
+            Left = 320
+            Height = 18
+            Top = 152
+            Width = 35
+            Caption = 'max:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lWind: TLabel
+            Left = 600
+            Height = 28
+            Top = 56
+            Width = 61
+            Caption = 'Wind:'
+            Font.Height = -24
+            ParentColor = False
+            ParentFont = False
+          end
+          object lWindDegrees: TLabel
+            Left = 600
+            Height = 18
+            Top = 96
+            Width = 63
+            Caption = 'degrees:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lWindGust: TLabel
+            Left = 600
+            Height = 18
+            Top = 124
+            Width = 36
+            Caption = 'gust:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object pOtherData: TPanel
+          Left = 32
+          Height = 144
+          Top = 256
+          Width = 928
+          ClientHeight = 144
+          ClientWidth = 928
+          TabOrder = 1
+          object lPressure: TLabel
+            Left = 17
+            Height = 18
+            Top = 48
+            Width = 68
+            Caption = 'pressure:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lHumidity: TLabel
+            Left = 16
+            Height = 18
+            Top = 76
+            Width = 67
+            Caption = 'humidity:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lVisibility: TLabel
+            Left = 16
+            Height = 18
+            Top = 104
+            Width = 62
+            Caption = 'visibility:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lCloud: TLabel
+            Left = 321
+            Height = 18
+            Top = 48
+            Width = 145
+            Caption = 'cloud cover (%age:)'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lSunrise: TLabel
+            Left = 601
+            Height = 18
+            Top = 48
+            Width = 57
+            Caption = 'sunrise:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+          object lSunset: TLabel
+            Left = 601
+            Height = 18
+            Top = 76
+            Width = 53
+            Caption = 'sunset:'
+            Font.Height = -16
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object lForecastTime: TLabel
+          Left = 48
+          Height = 18
+          Top = 552
+          Width = 99
+          Caption = 'Forecast time'
+          Font.Height = -16
+          ParentColor = False
+          ParentFont = False
+        end
+        object lTimeNow: TLabel
+          Left = 672
+          Height = 18
+          Top = 552
+          Width = 70
+          Caption = 'time now:'
+          Font.Height = -16
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+    end
+    object PForecast: TTabSheet
+      Caption = 'Forecast'
+    end
+    object PTariff: TTabSheet
+      Caption = 'Energy Tariffs'
+      ClientHeight = 674
+      ClientWidth = 1052
+      object pbTariff: TPaintBox
+        Left = 24
+        Height = 529
+        Top = 56
+        Width = 1000
+        OnPaint = pbTariffPaint
+      end
+    end
+    object PSettings: TTabSheet
+      Caption = 'Settings'
+      ClientHeight = 674
+      ClientWidth = 1052
+      ParentShowHint = False
+      object bSave: TButton
+        Left = 952
+        Height = 30
+        Top = 640
+        Width = 75
+        Caption = 'Save'
+        OnClick = bSaveClick
+        TabOrder = 0
+      end
+      object PWeatherSettings: TPanel
+        Left = 16
+        Height = 218
+        Top = 416
+        Width = 1010
+        BevelInner = bvLowered
+        BevelWidth = 3
+        BorderWidth = 3
+        BorderStyle = bsSingle
+        ClientHeight = 216
+        ClientWidth = 1008
+        TabOrder = 1
+        object eOpenWeatherCity: TEdit
+          Left = 16
+          Height = 22
+          Top = 114
+          Width = 256
+          TabOrder = 0
+        end
+        object eOpenWeatherApiKey: TEdit
+          Left = 312
+          Height = 22
+          Top = 114
+          Width = 256
+          EchoMode = emPassword
+          PasswordChar = '*'
+          TabOrder = 1
+        end
+        object lOpenWeatherApiKey: TLabel
+          Left = 320
+          Height = 16
+          Top = 96
+          Width = 168
+          AutoSize = False
+          Caption = 'Api Key'
+          Font.Height = 13
+          ParentColor = False
+          ParentFont = False
+          OptimalFill = True
+        end
+        object lOpenWeatherCity: TLabel
+          Left = 24
+          Height = 16
+          Top = 96
+          Width = 120
+          AutoSize = False
+          Caption = 'City'
+          Font.Height = 13
+          ParentColor = False
+          ParentFont = False
+          OptimalFill = True
+        end
+        object Label1: TLabel
+          Left = 16
+          Height = 18
+          Top = 10
+          Width = 180
+          Caption = 'Open Weather Settings'
+          Font.Height = -16
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object eOpenWeatherApi: TEdit
+          Left = 16
+          Height = 22
+          Top = 56
+          Width = 945
+          OnExit = tePollEditingDone
+          TabOrder = 2
+        end
+        object lOpenWeatherApi: TLabel
+          Left = 24
+          Height = 16
+          Top = 38
+          Width = 120
+          AutoSize = False
+          Caption = 'Api'
+          Font.Height = 13
+          ParentColor = False
+          ParentFont = False
+          OptimalFill = True
+        end
+        object ckForecast: TCheckBox
+          Left = 24
+          Height = 18
+          Hint = 'If checked, forecast data will be retrieved at the same time as energy tariff data'
+          Top = 152
+          Width = 121
+          Caption = 'Get forecast data'
+          Checked = True
+          State = cbChecked
+          TabOrder = 3
+        end
+        object ckWeather: TCheckBox
+          Left = 24
+          Height = 18
+          Top = 184
+          Width = 138
+          Caption = 'Get Current weather'
+          Checked = True
+          OnChange = ckWeatherChange
+          State = cbChecked
+          TabOrder = 4
+        end
+        object pWeatherSub: TPanel
+          Left = 168
+          Height = 50
+          Top = 160
+          Width = 362
+          ClientHeight = 50
+          ClientWidth = 362
+          TabOrder = 5
+          object ePollInterval: TEdit
+            Left = 96
+            Height = 22
+            Top = 18
+            Width = 88
+            NumbersOnly = True
+            TabOrder = 0
+          end
+          object lWeatherPoll: TLabel
+            Left = 8
+            Height = 16
+            Top = 24
+            Width = 80
+            Caption = 'refresh every'
+            ParentColor = False
+          end
+          object lWeatherPollMinutes: TLabel
+            Left = 192
+            Height = 16
+            Top = 24
+            Width = 48
+            Caption = 'minutes'
+            ParentColor = False
+          end
+        end
+      end
+      object pTariffSettings: TPanel
+        Left = 16
+        Height = 152
+        Top = 248
+        Width = 1010
+        BevelInner = bvLowered
+        BevelWidth = 3
+        BorderStyle = bsSingle
+        ClientHeight = 150
+        ClientWidth = 1008
+        TabOrder = 2
+        object eOctopusApi: TEdit
+          Left = 16
+          Height = 22
+          Top = 64
+          Width = 945
+          OnExit = tePollEditingDone
+          TabOrder = 0
+        end
+        object lPoll: TLabel
+          Left = 24
+          Height = 16
+          Top = 40
+          Width = 48
+          AutoSize = False
+          Caption = 'Api'
+          Font.Height = 13
+          ParentColor = False
+          ParentFont = False
+          OptimalFill = True
+        end
+        object Label2: TLabel
+          Left = 16
+          Height = 18
+          Top = 10
+          Width = 223
+          Caption = 'Octopus Agile Tariff Settings'
+          Font.Height = -16
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object ckTariff: TCheckBox
+          Left = 24
+          Height = 18
+          Top = 120
+          Width = 102
+          Caption = 'Get tariff data'
+          Checked = True
+          State = cbChecked
+          TabOrder = 1
+        end
+      end
+      object pTimers: TPanel
+        Left = 16
+        Height = 90
+        Top = 136
+        Width = 1011
+        BevelInner = bvLowered
+        BevelWidth = 3
+        ClientHeight = 90
+        ClientWidth = 1011
+        TabOrder = 3
+        object lat: TLabel
+          Left = 17
+          Height = 16
+          Top = 54
+          Width = 189
+          Caption = 'Poll Forecast and Tariff data at:'
+          ParentColor = False
+        end
+        object tePoll: TTimeEdit
+          Left = 241
+          Height = 22
+          Top = 48
+          Width = 103
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
+          OnEditingDone = tePollEditingDone
+          TabOrder = 0
+        end
+        object eNextPoll: TEdit
+          Left = 361
+          Height = 22
+          Top = 48
+          Width = 511
+          TabOrder = 1
+        end
+        object bPoll: TButton
+          Left = 887
+          Height = 38
+          Top = 40
+          Width = 75
+          Caption = 'Poll now'
+          OnClick = bPollClick
+          TabOrder = 2
+        end
+        object lGeneral: TLabel
+          Left = 16
+          Height = 18
+          Top = 10
+          Width = 67
+          Caption = 'Poll time'
+          Font.Height = -16
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object Label3: TLabel
+        Left = 416
+        Height = 38
+        Top = 72
+        Width = 114
+        Caption = 'Settings'
+        Font.Height = -32
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object PLog: TTabSheet
+      Caption = 'Logs'
+      ClientHeight = 674
+      ClientWidth = 1052
+      object lbResults: TListBox
+        Left = 40
+        Height = 592
+        Top = 48
+        Width = 956
+        ItemHeight = 0
+        TabOrder = 0
+      end
+    end
   end
-  object tePoll: TTimeEdit
-    Left = 520
-    Height = 22
-    Top = 28
-    Width = 103
-    ButtonWidth = 23
-    NumGlyphs = 1
-    MaxLength = 0
-    OnEditingDone = tePollEditingDone
-    TabOrder = 1
-  end
-  object lPoll: TLabel
-    Left = 48
-    Height = 16
-    Top = 300
-    Width = 78
-    AutoSize = False
-    Caption = 'Octopus api'
-    Font.Height = 13
-    ParentColor = False
-    ParentFont = False
-    OptimalFill = True
-  end
-  object eOctopusApi: TEdit
-    Left = 40
-    Height = 22
-    Top = 320
-    Width = 889
-    OnExit = tePollEditingDone
-    TabOrder = 2
-  end
-  object lat: TLabel
-    Left = 456
-    Height = 16
-    Top = 31
-    Width = 52
-    Caption = 'Poll time'
-    ParentColor = False
-  end
-  object lbResults: TListBox
-    Left = 40
-    Height = 216
-    Top = 69
-    Width = 984
-    ItemHeight = 0
-    TabOrder = 3
-  end
-  object bPoll: TButton
-    Left = 941
-    Height = 38
-    Top = 20
-    Width = 75
-    Caption = 'Poll now'
-    OnClick = bPollClick
-    TabOrder = 4
-  end
-  object eNextPoll: TEdit
-    Left = 640
-    Height = 22
-    Top = 28
-    Width = 288
-    TabOrder = 5
-  end
-  object eOpenWeatherApi: TEdit
-    Left = 40
-    Height = 22
-    Top = 368
-    Width = 889
-    OnExit = tePollEditingDone
-    TabOrder = 6
-  end
-  object lOpenWeatherApi: TLabel
-    Left = 48
-    Height = 16
-    Top = 350
-    Width = 120
-    AutoSize = False
-    Caption = 'Open Weather Api'
-    Font.Height = 13
-    ParentColor = False
-    ParentFont = False
-    OptimalFill = True
-  end
-  object eOpenWeatherCity: TEdit
-    Left = 40
-    Height = 22
-    Top = 416
-    Width = 256
-    TabOrder = 7
-  end
-  object lOpenWeatherCity: TLabel
-    Left = 48
-    Height = 16
-    Top = 400
-    Width = 120
-    AutoSize = False
-    Caption = 'Open Weather City'
-    Font.Height = 13
-    ParentColor = False
-    ParentFont = False
-    OptimalFill = True
-  end
-  object eOpenWeatherApiKey: TEdit
-    Left = 328
-    Height = 22
-    Top = 416
-    Width = 256
-    EchoMode = emPassword
-    PasswordChar = '*'
-    TabOrder = 8
-  end
-  object lOpenWeatherApiKey: TLabel
-    Left = 336
-    Height = 16
-    Top = 400
-    Width = 168
-    AutoSize = False
-    Caption = 'Open Weather Api Key'
-    Font.Height = 13
-    ParentColor = False
-    ParentFont = False
-    OptimalFill = True
-  end
-  object Timer1: TTimer
+  object MainTimer: TTimer
     Enabled = False
-    OnTimer = Timer1Timer
+    OnTimer = MainTimerTimer
     Left = 14
+    Top = 8
+  end
+  object WeatherTimer: TTimer
+    OnTimer = WeatherTimerTimer
+    Left = 64
     Top = 8
   end
 end

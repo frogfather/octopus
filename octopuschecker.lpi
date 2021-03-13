@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="5">
+    <Units Count="8">
       <Unit0>
         <Filename Value="octopuschecker.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -61,6 +61,19 @@
         <Filename Value="tariff.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="forecast.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="weather.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="mmutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="mmUtils"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

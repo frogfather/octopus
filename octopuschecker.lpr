@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, octopus, dm, entityUtils;
+  Forms, octopus, dm, entityUtils, forecast, weather, mmUtils;
 
 {$R *.res}
 

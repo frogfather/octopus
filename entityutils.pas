@@ -52,9 +52,11 @@ type
     FEntityId: String;
   public
     constructor create(const inputObject: TJSONObject); reintroduce;
-    constructor create(sqlQuery: TSqlQuery);
+    constructor create(sqlQuery: TSqlQuery); virtual; abstract;
     function getType: String;
     function getId: String;
+    procedure setId(entityId: String);
+    procedure setType(entityType: string);
     function writeToDatabase(sqlQuery: TSqlQuery): boolean; virtual; abstract;
     function getFindSql: string; virtual; abstract;
   end;
@@ -63,25 +65,30 @@ implementation
 
 { TEntity }
 
-constructor TEntity.Create(const inputObject: TJSONObject);
+constructor TEntity.create(const inputObject: TJSONObject);
 begin
   FEntityId:=inputObject.get('entityId');
   FEntityType:=inputObject.get('entityType');
 end;
 
-constructor TEntity.Create(sqlQuery: TSqlQuery);
-begin
-
-end;
-
-function TEntity.GetType: String;
+function TEntity.getType: String;
 begin
   result:=FEntityType;
 end;
 
-function TEntity.GetId: String;
+function TEntity.getId: String;
 begin
   result:=FEntityId;
+end;
+
+procedure TEntity.setId(entityId: String);
+begin
+  FEntityId:=entityId;
+end;
+
+procedure TEntity.setType(entityType: string);
+begin
+  FEntityType:=entityType;
 end;
 
 

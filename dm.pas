@@ -5,7 +5,7 @@ unit dm;
 interface
 
 uses
-  Classes, SysUtils, PQConnection, SQLDB, fpjson, jsonparser, dateutils, entityUtils;
+  Classes, SysUtils, PQConnection, SQLDB, fpjson, jsonparser, dateutils, entityUtils, tariff;
 
 type
 
@@ -17,8 +17,9 @@ type
     sqlAdd: TSQLQuery;
     sqlTrans: TSQLTransaction;
   private
-    procedure setParameterAndQuery(pName: string; pValue: TDateTime);
+
   public
+    procedure getTariffData(em: TEntityListManager);
     function saveData(manager: TEntityListManager):integer;
   end;
 
@@ -31,12 +32,28 @@ implementation
 
 { Tdm1 }
 
-procedure Tdm1.setParameterAndQuery(pName: string; pValue: TDateTime);
+procedure Tdm1.getTariffData(em: TEntityListManager);
+var
+  startTime: TDateTime;
+  sqlRender:TSqlQuery;
+  newTariff: TTariff;
 begin
-  if (sqlLookup.Params.Count > 0) then
+  startTime:=now;
+  incHour(startTime,-1);
+  sqlRender:=TSqlQuery.Create(self);
+  sqlRender.DataBase:=pqConn;
+  sqlRender.Transaction:=sqlTrans;
+  sqlRender.SQL.Text:='SELECT * FROM tariff where valid_from > '''+formatDateTime('yyyy-mm-dd hh:nn:ss',startTime)+''' order by inc_vat';
+  sqlRender.Active:=true;
+  sqlRender.First;
+  while not sqlRender.EOF do
     begin
-    sqlLookup.Params.ParamByName(pName).AsDateTime:=pValue;
-    sqlLookup.ExecSQL;
+    //create a new tariff entity for each
+    newTariff:=TTariff.Create(sqlRender);
+    newTariff.setId(sqlRender.FieldByName('id').AsAnsiString);
+    newTariff.setType('TTariff');
+    em.AddEntity(newTariff);
+    sqlRender.Next;
     end;
 end;
 
