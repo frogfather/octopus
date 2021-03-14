@@ -5,22 +5,26 @@ unit dm;
 interface
 
 uses
-  Classes, SysUtils, PQConnection, SQLDB, fpjson, jsonparser, dateutils, entityUtils, tariff;
+  Classes, SysUtils, PQConnection, SQLDB, DB, fpjson, jsonparser, dateutils,
+  entityUtils, tariff;
 
 type
 
   { Tdm1 }
 
   Tdm1 = class(TDataModule)
+    dsForecast: TDataSource;
     pqConn: TPQConnection;
     sqlLookup: TSQLQuery;
     sqlAdd: TSQLQuery;
+    sqlForecast: TSQLQuery;
     sqlTrans: TSQLTransaction;
   private
 
   public
     procedure getTariffData(em: TEntityListManager);
     function saveData(manager: TEntityListManager):integer;
+    procedure displayForecast(dDate: TDateTime);
   end;
 
 var
@@ -80,6 +84,13 @@ begin
         end;
     end;
   result:=recordCount;
+end;
+
+procedure Tdm1.displayForecast(dDate:TDateTime);
+begin
+  sqlForecast.Active:=false;
+  sqlForecast.SQL.Text:='SELECT * FROM forecast where date_for > '''+formatDateTime('yyyy-mm-dd hh:nn:ss', dDate)+'''';
+  sqlForecast.Active:=true;
 end;
 
 end.

@@ -236,6 +236,19 @@ object octopusForm: ToctopusForm
     end
     object PForecast: TTabSheet
       Caption = 'Forecast'
+      ClientHeight = 674
+      ClientWidth = 1052
+      OnShow = PForecastShow
+      object DBGrid1: TDBGrid
+        Left = 40
+        Height = 480
+        Top = 56
+        Width = 960
+        Color = clWindow
+        Columns = <>
+        DataSource = dm1.dsForecast
+        TabOrder = 0
+      end
     end
     object PTariff: TTabSheet
       Caption = 'Energy Tariffs'

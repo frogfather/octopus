@@ -1,11 +1,11 @@
 object dm1: Tdm1
   OldCreateOrder = False
   Height = 166
-  HorizontalOffset = 244
-  VerticalOffset = 165
+  HorizontalOffset = 872
+  VerticalOffset = 233
   Width = 369
   object pqConn: TPQConnection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'octopus'
     KeepConnection = False
@@ -17,7 +17,7 @@ object dm1: Tdm1
     Top = 27
   end
   object sqlTrans: TSQLTransaction
-    Active = False
+    Active = True
     Database = pqConn
     Left = 45
     Top = 98
@@ -71,5 +71,21 @@ object dm1: Tdm1
     Params = <>
     Left = 208
     Top = 98
+  end
+  object sqlForecast: TSQLQuery
+    FieldDefs = <>
+    Database = pqConn
+    Transaction = sqlTrans
+    SQL.Strings = (
+      ''
+    )
+    Params = <>
+    Left = 280
+    Top = 98
+  end
+  object dsForecast: TDataSource
+    DataSet = sqlForecast
+    Left = 280
+    Top = 44
   end
 end

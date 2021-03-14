@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, MaskEdit,
-  EditBtn, ExtCtrls, ComCtrls, fphttpclient, opensslsockets, fpjson, jsonparser,
-  dm, dateutils, entityUtils, tariff, forecast, weather;
+  EditBtn, ExtCtrls, ComCtrls, DBGrids, fphttpclient, opensslsockets, fpjson,
+  jsonparser, dm, dateutils, entityUtils, tariff, forecast, weather;
 
 type
   TariffEM = TEntityListManager;
@@ -20,6 +20,7 @@ type
     ckTariff: TCheckBox;
     ckForecast: TCheckBox;
     ckWeather: TCheckBox;
+    DBGrid1: TDBGrid;
     eNextPoll: TEdit;
     eOctopusApi: TEdit;
     eOpenWeatherApi: TEdit;
@@ -79,6 +80,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure pbTariffPaint(Sender: TObject);
+    procedure PForecastShow(Sender: TObject);
     procedure tePollEditingDone(Sender: TObject);
     procedure MainTimerTimer(Sender: TObject);
     procedure WeatherTimerTimer(Sender: TObject);
@@ -132,6 +134,12 @@ begin
   emptyManager(tariffRender);
   getTodaysTariffs(tariffRender);
   renderTodaysTariffs;
+end;
+
+procedure ToctopusForm.PForecastShow(Sender: TObject);
+
+begin
+  dm1.displayForecast(now);
 end;
 
 procedure ToctopusForm.bSaveClick(Sender: TObject);
