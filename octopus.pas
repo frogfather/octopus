@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, MaskEdit,
   EditBtn, ExtCtrls, ComCtrls, DBGrids, fphttpclient, opensslsockets, fpjson,
-  jsonparser, dm, dateutils, entityUtils, tariff, forecast, weather;
+  jsonparser, dm, dateutils, entityUtils, tariff, forecast, weather, fileUtil;
 
 type
   TariffEM = TEntityListManager;
@@ -104,7 +104,7 @@ type
     function getOpenWeatherForecast: string;
     function stringToJSON(input: string):TJSONObject;
     function priceToYPos(price, priceMin, priceMax, stepHeight: double): integer;
-
+    function findDirectory(fname,path:string):string;
   public
 
   end;
@@ -123,10 +123,53 @@ implementation
 { ToctopusForm }
 
 procedure ToctopusForm.FormShow(Sender: TObject);
+var
+  fileList:TStringList;
+  userDir:string;
+  Info : TSearchRec;
+  Count : Longint;
 begin
-  fileName:='/Users/cloudsoft/Code/octopus/settings.csv';
+  userDir:=getCurrentDir;
+  if (userDir = '/') then
+    begin
+     userDir:=findDIrectory('Users','/');
+     if (userDir = 'Users') then
+       begin
+        chDir('Users');
+        findDirectory('Cloudsoft','/Users');
+       end;
+    end;
+
+
+  userDir:='/Users/cloudsoft/Code/octopus/';
+  fileName:=userDir+'settings.csv';
   readSettings;
   getCurrentWeather;
+end;
+
+function ToctopusForm.findDirectory(fname,path:string):string;
+Var Info : TSearchRec;
+    Count : Longint;
+begin
+result:='';
+Count:=0;
+  If FindFirst ('*',faAnyFile and faDirectory,Info)=0 then
+    begin
+    Repeat
+      Inc(Count);
+      With Info do
+        begin
+        If (Attr and faDirectory) = faDirectory  then
+          lbresults.items.add(Name);
+          if (Name = fName) then
+            begin
+            result:=Name;
+            end;
+        end;
+    Until FindNext(info)<>0;
+    end;
+  FindClose(Info);
+
 end;
 
 procedure ToctopusForm.pbTariffPaint(Sender: TObject);
