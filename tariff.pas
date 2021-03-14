@@ -17,6 +17,7 @@ type
   public
     constructor Create; overload;
     constructor Create(tariffItem: TJSONObject); overload;
+    constructor Create(query:TSqlQuery); overload;
     destructor Destroy; override;
     function getFindSql:string; override;
     function writeToDatabase(sqlQuery: TSQLQuery):boolean; override;
@@ -38,6 +39,7 @@ constructor TTariff.Create(tariffItem: TJSONObject);
 var
   dValidFrom,dValidTo: TDateTime;
 begin
+  //create from a JSON object
   inherited Create(tariffItem);
   TryISOStrToDateTime(tariffItem.get('valid_from'), dValidFrom);
   TryISOStrToDateTime(tariffItem.get('valid_to'), dValidTo);
@@ -46,6 +48,20 @@ begin
   FExVat:=strToFloat(tariffItem.get('value_exc_vat'));
   FIncVat:=strToFloat(tariffItem.get('value_inc_vat'));
 end;
+
+constructor TTariff.Create(query: TSqlQuery);
+begin
+  //create new entity from queryData
+  if (query.RecordCount > 0) then
+  begin
+    FValidFrom:=query.FieldByName('valid_from').AsDateTime;
+    FValidTo:=query.FieldByName('valid_to').AsDateTime;
+    FExVat:=query.FieldByName('ex_vat').AsFloat;
+    FIncVat:=query.FieldByName('inc_vat').AsFloat;
+  end;
+end;
+
+
 
 destructor TTariff.Destroy;
 begin
@@ -59,11 +75,22 @@ end;
 
 function TTariff.writeToDatabase(sqlQuery: TSQLQuery): boolean;
 begin
-  sqlQuery.params.ParamByName('V_FROM').AsDateTime:=FValidFrom;
-  sqlQuery.params.ParamByName('V_TO').AsDateTime:=FValidTo;
-  sqlQuery.params.ParamByName('EX_VAT').AsFloat :=FexVat;
-  sqlQuery.params.ParamByName('INC_VAT').AsFloat:=FincVat;
-  sqlQuery.ExecSQL;
+  try
+    try
+    sqlQuery.params.ParamByName('V_FROM').AsDateTime:=FValidFrom;
+    sqlQuery.params.ParamByName('V_TO').AsDateTime:=FValidTo;
+    sqlQuery.params.ParamByName('EX_VAT').AsFloat :=FexVat;
+    sqlQuery.params.ParamByName('INC_VAT').AsFloat:=FincVat;
+    sqlQuery.ExecSQL;
+    result:=true;
+    except
+      on E: Exception do
+        begin
+          result:=false;
+        end;
+    end;
+  finally
+  end;
 end;
 
 

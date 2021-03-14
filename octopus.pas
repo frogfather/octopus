@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, MaskEdit,
   EditBtn, ExtCtrls, ComCtrls, fphttpclient, opensslsockets, fpjson, jsonparser,
-  dm, dateutils, entityUtils, tariff, forecast, weather, mmUtils;
+  dm, dateutils, entityUtils, tariff, forecast, weather;
 
 type
   TariffEM = TEntityListManager;
@@ -101,6 +101,8 @@ type
     function getOpenWeatherCurrent: string;
     function getOpenWeatherForecast: string;
     function stringToJSON(input: string):TJSONObject;
+    function priceToYPos(price, priceMin, priceMax, stepHeight: double): integer;
+
   public
 
   end;
@@ -459,6 +461,9 @@ begin
   end;
 end;
 
+
+
+
 function ToctopusForm.getOctopusAgile: string;
 begin
   result:= queryApi(eOctopusApi.Text);
@@ -477,6 +482,12 @@ end;
 function ToctopusForm.stringToJSON(input: string): TJSONObject;
 begin
   result:=TJSONObject(getJSON(input));
+end;
+
+function ToctopusForm.priceToYPos(price, priceMin, priceMax, stepHeight: double
+  ): integer;
+begin
+  result := round((price - PriceMin)/(PriceMax - priceMin) * (10 * StepHeight));
 end;
 
 function ToctopusForm.readStream(fnam: string): string;
