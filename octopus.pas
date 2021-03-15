@@ -159,6 +159,11 @@ begin
              exit;
            end;
          end;
+       if (userDir = '/') then
+         begin
+           messagedlg('','Cannot find user directory.',mtError,[mbOK],'');
+           application.Terminate;
+         end;
        result:='/Users/'+userDir;
     end;
 
