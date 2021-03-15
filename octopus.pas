@@ -124,10 +124,7 @@ implementation
 
 procedure ToctopusForm.FormShow(Sender: TObject);
 var
-  fileList:TStringList;
   userDir:string;
-  Info : TSearchRec;
-  Count : Longint;
 begin
   userDir:=getCurrentDir;
   if (userDir = '/') then
@@ -435,11 +432,8 @@ var
   barNo, xStart,xEnd,yStart,yEnd : integer;
   priceMax, priceMin: double;
   priceStep: integer;
-  tariffIndex:integer;
-  tariffItem:TTariff;
   yaxisStepHeight: double;
   yaxisStep:integer;
-  textHeight:integer;
   price:double;
   yOffset:integer;
 begin
@@ -469,7 +463,6 @@ pbTariff.Canvas.LineTo(pbTariff.Width, pbHeight - marginy);
 //draw the y axis markings
 pbTariff.Canvas.Font.Orientation:=0;
 yAxisStepHeight:=(pbHeight - marginy)/(priceMax/priceStep);
-textHeight:=pbTariff.Canvas.TextHeight('blah');
 for yaxisStep:=0 to 10 do
   begin
   yOffset:=priceToYpos(yAxisStep*priceStep, priceMin, priceMax, yAxisStepHeight);
