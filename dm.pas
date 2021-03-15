@@ -47,7 +47,7 @@ begin
   sqlRender:=TSqlQuery.Create(self);
   sqlRender.DataBase:=pqConn;
   sqlRender.Transaction:=sqlTrans;
-  sqlRender.SQL.Text:='SELECT * FROM tariff where valid_from > '''+formatDateTime('yyyy-mm-dd hh:nn:ss',startTime)+''' order by inc_vat';
+  sqlRender.SQL.Text:='SELECT * FROM tariff where valid_from > '''+formatDateTime('yyyy-mm-dd hh:nn:ss',startTime)+''' order by valid_from';
   sqlRender.Active:=true;
   sqlRender.First;
   while not sqlRender.EOF do

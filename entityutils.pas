@@ -52,7 +52,7 @@ type
     FEntityId: String;
   public
     constructor create(const inputObject: TJSONObject); reintroduce;
-    constructor create(sqlQuery: TSqlQuery); virtual; abstract;
+    constructor create(sqlQuery: TSqlQuery); virtual;
     function getType: String;
     function getId: String;
     procedure setId(entityId: String);
@@ -69,6 +69,11 @@ constructor TEntity.create(const inputObject: TJSONObject);
 begin
   FEntityId:=inputObject.get('entityId');
   FEntityType:=inputObject.get('entityType');
+end;
+
+constructor TEntity.create(sqlQuery: TSqlQuery);
+begin
+
 end;
 
 function TEntity.getType: String;
