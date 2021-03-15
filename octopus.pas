@@ -104,7 +104,8 @@ type
     function getOpenWeatherForecast: string;
     function stringToJSON(input: string):TJSONObject;
     function priceToYPos(price, priceMin, priceMax, stepHeight: double): integer;
-    function findDirectory(fname,path:string):string;
+    function findDirectories(path:string):TStringlist;
+    function getUserDir:string;
   public
 
   end;
@@ -126,29 +127,49 @@ procedure ToctopusForm.FormShow(Sender: TObject);
 var
   userDir:string;
 begin
-  userDir:=getCurrentDir;
-  if (userDir = '/') then
-    begin
-     userDir:=findDIrectory('Users','/');
-     if (userDir = 'Users') then
-       begin
-        chDir('Users');
-        findDirectory('Cloudsoft','/Users');
-       end;
-    end;
-
-
-  userDir:='/Users/cloudsoft/Code/octopus/';
-  fileName:=userDir+'settings.csv';
+  userDir:=getUserDir;
+  fileName:=userDir+'/.octopus.csv';
   readSettings;
   getCurrentWeather;
 end;
 
-function ToctopusForm.findDirectory(fname,path:string):string;
+//This complete mess is required because getUserDir on MacOS Catalina returns '/'
+function ToctopusForm.getUserDir: string;
+var
+  userDir:string;
+  directoryList:TStringlist;
+  index:integer;
+begin
+  directoryList:=TStringlist.create;
+  userDir:=getCurrentDir;
+  if (userDir <> '/') then result:=userDir else
+    begin
+     directoryList:= findDIrectories('/');
+     if (directoryList.IndexOf('Users') > -1) then
+       chdir('Users');
+       directoryList:=findDirectories('Users/');
+       if (directoryList.IndexOf('Shared') > -1) then directoryList.Delete(directorylist.IndexOf('Shared'));
+       //now if we have one user we can select it, otherwise we need to ask
+       if (directoryList.Count = 1) then userDir := directoryList[0] else
+         for index:=0 to directoryList.count -1 do
+         begin
+         if (messagedlg('','Are you user '+directoryList[index],mtConfirmation,[mbYes,mbNo],'') = mrYes) then
+           begin
+             userDir:= directoryList[index];
+             exit;
+           end;
+         end;
+       result:='/Users/'+userDir;
+    end;
+
+end;
+
+
+function ToctopusForm.findDirectories(path:string):TStringlist;
 Var Info : TSearchRec;
     Count : Longint;
 begin
-result:='';
+result:=TStringlist.Create;
 Count:=0;
   If FindFirst ('*',faAnyFile and faDirectory,Info)=0 then
     begin
@@ -156,18 +177,15 @@ Count:=0;
       Inc(Count);
       With Info do
         begin
-        If (Attr and faDirectory) = faDirectory  then
-          lbresults.items.add(Name);
-          if (Name = fName) then
-            begin
-            result:=Name;
-            end;
+        If ((Attr and faDirectory) = faDirectory) and (Name <> '.') and (Name <> '..')  then
+          result.Add(Name);
         end;
     Until FindNext(info)<>0;
     end;
   FindClose(Info);
 
 end;
+
 
 procedure ToctopusForm.pbTariffPaint(Sender: TObject);
 begin
@@ -284,6 +302,10 @@ begin
     except
       on e: Exception do messagedlg('','Error loading settings '+e.Message, mtError, [mbOK],'');
     end;
+  end else
+  begin
+  mainTimer.Enabled:=false;
+  weatherTimer.Enabled:=false;
   end;
 end;
 
@@ -436,6 +458,9 @@ var
   yaxisStep:integer;
   price:double;
   yOffset:integer;
+  segmentDate:TDateTime;
+  resultId:integer;
+  resultPrice:Double;
 begin
 //set some constants
 marginx:=30;
@@ -443,17 +468,22 @@ marginy:=50;
 pbWidth:=pbTariff.Width;
 pbHeight:=pbTariff.Height;
 //space between bars
-barGap:=5;
+barGap:=4;
 itemCount:=tariffRender.Count;
 //how wide each bar is
 barWidth:=((pbWidth - marginx) div itemCount) - barGap;
 xStart:=barGap;
 yEnd:=pbTariff.Height - marginy;
-//find the largest and smallest value of inc_vat in the list. We've sorted by this field so it should be first and last
-priceMax:=(tariffRender.FindByPosition(tariffRender.Count - 1) as TTariff).IncVat;
-priceMin:=(tariffRender.FindByPosition(0) as TTariff).IncVat;
-//price min can be below zero
-if (PriceMin > 0) then PriceMin := 0;
+//find the largest and smallest value of inc_vat in the list.
+priceMin:=0;
+priceMax:=0;
+for resultId := 0 to itemCount - 1 do
+  begin
+  resultPrice:= (tariffRender.FindByPosition(resultId) as TTariff).IncVat;
+  if (resultPrice < priceMin ) then priceMin:= resultPrice;
+  if (resultPrice > priceMax ) then priceMax:= resultPrice;
+  end;
+
 //Max 10 steps to avoid a cluttered display
 priceStep:=round((PriceMax-PriceMin)/10);
 //draw the graph axes
@@ -478,10 +508,12 @@ for yaxisStep:=0 to 10 do
 for barNo:=0 to itemCount - 1 do with pbTariff.canvas do
   begin
   //ystart is the top :(
-  xStart:=((barWidth + barGap) * barNo) + barGap+marginx;
+  xStart:=((barWidth + barGap) * barNo) + (barGap div 2) +marginx;
   xEnd:=xStart+barWidth;
   //ystart depends on the value of inc_vat
   price:=(tariffRender.FindByPosition(barNo) as TTariff).IncVat;
+  segmentDate:=(tariffRender.FindByPosition(barNo) as TTariff).ValidFrom;
+
   yoffset:=priceToYPos(price, priceMin, priceMax, yAxisStepHeight);
   ystart:=pbHeight - marginy - yOffset;
   Brush.Color:=$000000A0;
@@ -489,7 +521,7 @@ for barNo:=0 to itemCount - 1 do with pbTariff.canvas do
   //Draw the times at the bottom
   Brush.Color:=clDefault;
   Font.Orientation:=900;
-  TextOut(xstart+(barwidth div 4) , pbHeight, formatFloat('0.00',price));
+  TextOut(xstart+(barwidth div 4) , pbHeight, formatDateTime('ddd dd mmm hh:nn',segmentDate));
   end;
 end;
 
