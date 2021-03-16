@@ -1,0 +1,91 @@
+object dm1: Tdm1
+  OldCreateOrder = False
+  Height = 166
+  HorizontalOffset = 872
+  VerticalOffset = 233
+  Width = 369
+  object pqConn: TPQConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'octopus'
+    KeepConnection = False
+    Password = 'tigger'
+    Transaction = sqlTrans
+    UserName = 'john'
+    HostName = '192.168.0.24'
+    Left = 44
+    Top = 27
+  end
+  object sqlTrans: TSQLTransaction
+    Active = True
+    Database = pqConn
+    Left = 45
+    Top = 98
+  end
+  object sqlLookup: TSQLQuery
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'ex_vat'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'inc_vat'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'valid_from'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'valid_to'
+        DataType = ftDateTime
+        Precision = -1
+      end>
+    Database = pqConn
+    Transaction = sqlTrans
+    SQL.Strings = (
+      ''
+    )
+    InsertSQL.Strings = (
+      ''
+    )
+    Params = <>
+    Left = 120
+    Top = 98
+  end
+  object sqlAdd: TSQLQuery
+    FieldDefs = <>
+    Database = pqConn
+    Transaction = sqlTrans
+    Params = <>
+    Left = 208
+    Top = 98
+  end
+  object sqlForecast: TSQLQuery
+    FieldDefs = <>
+    Database = pqConn
+    Transaction = sqlTrans
+    SQL.Strings = (
+      ''
+    )
+    Params = <>
+    Left = 280
+    Top = 98
+  end
+  object dsForecast: TDataSource
+    DataSet = sqlForecast
+    Left = 280
+    Top = 44
+  end
+end

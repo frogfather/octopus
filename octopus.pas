@@ -128,7 +128,9 @@ var
   userDir:string;
 begin
   userDir:=getUserDir;
+
   fileName:=userDir+'/.octopus.csv';
+  lbresults.items.add('filename set to '+filename);
   readSettings;
   getCurrentWeather;
 end;
@@ -142,7 +144,11 @@ var
 begin
   directoryList:=TStringlist.create;
   userDir:=getCurrentDir;
-  if (userDir <> '/') then result:=userDir else
+  if (userDir <> '/') then
+    begin
+    //if the correct path is returned the config file will be where the executable is
+    result:=userDir
+    end else
     begin
      directoryList:= findDIrectories('/');
      if (directoryList.IndexOf('Users') > -1) then
@@ -294,8 +300,8 @@ begin
           'open-weather-city': eOpenWeatherCity.Text:=value;
           'open-weather-api-key': eOpenWeatherApiKey.Text:=value;
           'tariff-enabled': ckTariff.checked:=strToBool(value);
-          'forecast-enabled': ckWeather.Checked:=strToBool(value);
-          'weather-enabled': ckWeather.Enabled:=strToBool(value);
+          'forecast-enabled': ckForecast.Checked:=strToBool(value);
+          'weather-enabled': ckWeather.checked:=strToBool(value);
           'weather-poll-interval': epollInterval.Text:=value;
           end;
         end;
