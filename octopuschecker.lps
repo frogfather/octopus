@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="36">
+    <Units Count="8">
       <Unit0>
         <Filename Value="octopuschecker.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="34" Y="10"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="631"/>
       </Unit0>
       <Unit1>
         <Filename Value="octopus.pas"/>
@@ -18,9 +18,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="139"/>
-        <CursorPos X="34" Y="173"/>
-        <UsageCount Value="89"/>
+        <TopLine Value="367"/>
+        <CursorPos X="128" Y="393"/>
+        <UsageCount Value="631"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -33,7 +33,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="28"/>
         <CursorPos X="139" Y="50"/>
-        <UsageCount Value="84"/>
+        <UsageCount Value="626"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -43,7 +43,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="41"/>
         <CursorPos X="3" Y="76"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="595"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -52,353 +52,150 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="30"/>
         <CursorPos X="32" Y="43"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="595"/>
       </Unit4>
       <Unit5>
         <Filename Value="forecast.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="81"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="587"/>
       </Unit5>
       <Unit6>
         <Filename Value="weather.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="34" Y="20"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="581"/>
       </Unit6>
       <Unit7>
-        <Filename Value="mmutils.pas"/>
-        <UnitName Value="mmUtils"/>
+        <Filename Value="/usr/lib64/lazarus/lcl/include/control.inc"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="9" Y="16"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="3527"/>
+        <CursorPos Y="3527"/>
+        <UsageCount Value="266"/>
       </Unit7>
-      <Unit8>
-        <Filename Value="/Library/Lazarus/lcl/include/customform.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="448"/>
-        <CursorPos X="94" Y="464"/>
-        <UsageCount Value="8"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/packages/fcl-web/src/base/fphttpclient.pp"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1414"/>
-        <CursorPos X="19" Y="1427"/>
-        <UsageCount Value="8"/>
-      </Unit9>
-      <Unit10>
-        <Filename Value="/usr/share/fpcsrc/3.2.0/packages/rtl-objpas/src/inc/dateutil.pp"/>
-        <UnitName Value="DateUtils"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="10"/>
-        <UsageCount Value="8"/>
-      </Unit10>
-      <Unit11>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/packages/fcl-db/src/sqldb/postgres/pqconnection.pp"/>
-        <UnitName Value="PQConnection"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="70"/>
-        <CursorPos X="3" Y="85"/>
-        <UsageCount Value="10"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="/Applications/Lazarus/components/tachart/tamath.pas"/>
-        <UnitName Value="TAMath"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="106"/>
-        <CursorPos X="15" Y="121"/>
-        <UsageCount Value="10"/>
-      </Unit12>
-      <Unit13>
-        <Filename Value="/Applications/Lazarus/components/tachart/tacustomsource.pas"/>
-        <UnitName Value="TACustomSource"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="559"/>
-        <CursorPos X="49" Y="574"/>
-        <UsageCount Value="10"/>
-      </Unit13>
-      <Unit14>
-        <Filename Value="/Applications/Lazarus/components/fpdebug/fpdbgdwarfdataclasses.pas"/>
-        <UnitName Value="FpDbgDwarfDataClasses"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2762"/>
-        <CursorPos X="30" Y="2774"/>
-        <UsageCount Value="10"/>
-      </Unit14>
-      <Unit15>
-        <Filename Value="fphttpclient.pp"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1265"/>
-        <CursorPos Y="1282"/>
-        <UsageCount Value="10"/>
-      </Unit15>
-      <Unit16>
-        <Filename Value="/Applications/Lazarus/lcl/include/control.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2901"/>
-        <CursorPos Y="2913"/>
-        <UsageCount Value="10"/>
-      </Unit16>
-      <Unit17>
-        <Filename Value="utils.pas"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="2" Y="9"/>
-        <UsageCount Value="21"/>
-      </Unit17>
-      <Unit18>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/packages/fcl-db/src/sqldb/sqldb.pp"/>
-        <UnitName Value="SQLDB"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="660"/>
-        <CursorPos X="31" Y="674"/>
-        <UsageCount Value="10"/>
-      </Unit18>
-      <Unit19>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/packages/fcl-db/src/base/bufdataset.pas"/>
-        <UnitName Value="BufDataset"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="3874"/>
-        <CursorPos X="5" Y="3902"/>
-        <UsageCount Value="10"/>
-      </Unit19>
-      <Unit20>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/objpas/fgl.pp"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="43"/>
-        <CursorPos X="15" Y="44"/>
-        <UsageCount Value="16"/>
-      </Unit20>
-      <Unit21>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/packages/fcl-json/src/fpjson.pp"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="703"/>
-        <CursorPos X="14" Y="718"/>
-        <UsageCount Value="12"/>
-      </Unit21>
-      <Unit22>
-        <Filename Value="/Applications/Lazarus/lcl/include/graphiccontrol.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="77"/>
-        <CursorPos X="41" Y="86"/>
-        <UsageCount Value="10"/>
-      </Unit22>
-      <Unit23>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/objpas/sysutils/sysstrh.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="55"/>
-        <CursorPos X="4" Y="94"/>
-        <UsageCount Value="10"/>
-      </Unit23>
-      <Unit24>
-        <Filename Value="/Applications/Lazarus/lcl/forms.pp"/>
-        <UnitName Value="Forms"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="135"/>
-        <CursorPos X="3" Y="155"/>
-        <UsageCount Value="10"/>
-      </Unit24>
-      <Unit25>
-        <Filename Value="/Applications/Lazarus/lcl/controls.pp"/>
-        <UnitName Value="Controls"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1082"/>
-        <CursorPos X="3" Y="1102"/>
-        <UsageCount Value="10"/>
-      </Unit25>
-      <Unit26>
-        <Filename Value="/Applications/Lazarus/lcl/lclclasses.pp"/>
-        <UnitName Value="LCLClasses"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="22"/>
-        <CursorPos X="3" Y="42"/>
-        <UsageCount Value="10"/>
-      </Unit26>
-      <Unit27>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/objpas/classes/classesh.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1874"/>
-        <CursorPos X="52" Y="1894"/>
-        <UsageCount Value="10"/>
-      </Unit27>
-      <Unit28>
-        <Filename Value="/Applications/Lazarus/lcl/include/custompage.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="183"/>
-        <CursorPos X="50" Y="188"/>
-        <UsageCount Value="10"/>
-      </Unit28>
-      <Unit29>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/objpas/sysutils/diskh.inc"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="10" Y="18"/>
-        <UsageCount Value="10"/>
-      </Unit29>
-      <Unit30>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/objpas/sysutils/sysutils.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="673"/>
-        <CursorPos X="7" Y="675"/>
-        <UsageCount Value="10"/>
-      </Unit30>
-      <Unit31>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/inc/systemh.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1350"/>
-        <CursorPos X="11" Y="1376"/>
-        <UsageCount Value="10"/>
-      </Unit31>
-      <Unit32>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/inc/system.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1873"/>
-        <CursorPos X="6" Y="1875"/>
-        <UsageCount Value="10"/>
-      </Unit32>
-      <Unit33>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/unix/sysdir.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="56"/>
-        <CursorPos X="7" Y="59"/>
-        <UsageCount Value="10"/>
-      </Unit33>
-      <Unit34>
-        <Filename Value="/Applications/Lazarus/components/lazutils/fileutil.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="617"/>
-        <CursorPos Y="637"/>
-        <UsageCount Value="10"/>
-      </Unit34>
-      <Unit35>
-        <Filename Value="/usr/local/share/fpcsrc/3.2.0/rtl/objpas/sysutils/filutilh.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="103"/>
-        <CursorPos X="25" Y="105"/>
-        <UsageCount Value="10"/>
-      </Unit35>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="octopus.pas"/>
-        <Caret Line="134" TopLine="117"/>
+        <Caret Line="295" TopLine="276"/>
       </Position1>
       <Position2>
         <Filename Value="octopus.pas"/>
-        <Caret Line="142" Column="8" TopLine="117"/>
+        <Caret Line="296" TopLine="276"/>
       </Position2>
       <Position3>
         <Filename Value="octopus.pas"/>
-        <Caret Line="143" TopLine="117"/>
+        <Caret Line="297" TopLine="276"/>
       </Position3>
       <Position4>
         <Filename Value="octopus.pas"/>
-        <Caret Line="163" TopLine="141"/>
+        <Caret Line="292" TopLine="276"/>
       </Position4>
       <Position5>
         <Filename Value="octopus.pas"/>
-        <Caret Line="108" Column="19" TopLine="92"/>
+        <Caret Line="294" TopLine="276"/>
       </Position5>
       <Position6>
         <Filename Value="octopus.pas"/>
-        <Caret Line="158" Column="19" TopLine="127"/>
+        <Caret Line="295" TopLine="276"/>
       </Position6>
       <Position7>
         <Filename Value="octopus.pas"/>
-        <Caret Line="138" Column="4" TopLine="118"/>
+        <Caret Line="296" TopLine="276"/>
       </Position7>
       <Position8>
         <Filename Value="octopus.pas"/>
-        <Caret Line="156" Column="92" TopLine="136"/>
+        <Caret Line="292" TopLine="276"/>
       </Position8>
       <Position9>
         <Filename Value="octopus.pas"/>
-        <Caret Line="130" TopLine="122"/>
+        <Caret Line="309" TopLine="281"/>
       </Position9>
       <Position10>
         <Filename Value="octopus.pas"/>
-        <Caret Line="164" Column="22" TopLine="144"/>
+        <Caret Line="310" TopLine="282"/>
       </Position10>
       <Position11>
         <Filename Value="octopus.pas"/>
-        <Caret Line="130" TopLine="110"/>
+        <Caret Line="284" TopLine="276"/>
       </Position11>
       <Position12>
         <Filename Value="octopus.pas"/>
-        <Caret Line="153" Column="58" TopLine="128"/>
+        <Caret Line="286" TopLine="276"/>
       </Position12>
       <Position13>
         <Filename Value="octopus.pas"/>
-        <Caret Line="130" TopLine="122"/>
+        <Caret Line="288" TopLine="276"/>
       </Position13>
       <Position14>
         <Filename Value="octopus.pas"/>
-        <Caret Line="162" Column="34" TopLine="128"/>
+        <Caret Line="290" TopLine="276"/>
       </Position14>
       <Position15>
         <Filename Value="octopus.pas"/>
-        <Caret Line="130" Column="7" TopLine="122"/>
+        <Caret Line="291" TopLine="276"/>
       </Position15>
       <Position16>
         <Filename Value="octopus.pas"/>
-        <Caret Line="132" TopLine="122"/>
+        <Caret Line="292" TopLine="276"/>
       </Position16>
       <Position17>
         <Filename Value="octopus.pas"/>
-        <Caret Line="133" TopLine="122"/>
+        <Caret Line="294" TopLine="276"/>
       </Position17>
       <Position18>
         <Filename Value="octopus.pas"/>
-        <Caret Line="130" TopLine="122"/>
+        <Caret Line="295" TopLine="276"/>
       </Position18>
       <Position19>
         <Filename Value="octopus.pas"/>
-        <Caret Line="131" TopLine="122"/>
+        <Caret Line="296" TopLine="276"/>
       </Position19>
       <Position20>
         <Filename Value="octopus.pas"/>
-        <Caret Line="132" TopLine="122"/>
+        <Caret Line="297" TopLine="276"/>
       </Position20>
       <Position21>
         <Filename Value="octopus.pas"/>
-        <Caret Line="273" TopLine="253"/>
+        <Caret Line="292" TopLine="276"/>
       </Position21>
       <Position22>
         <Filename Value="octopus.pas"/>
-        <Caret Line="131" Column="23" TopLine="115"/>
+        <Caret Line="294" TopLine="276"/>
       </Position22>
       <Position23>
         <Filename Value="octopus.pas"/>
-        <Caret Line="130" TopLine="115"/>
+        <Caret Line="295" TopLine="276"/>
       </Position23>
       <Position24>
         <Filename Value="octopus.pas"/>
-        <Caret Line="131" TopLine="115"/>
+        <Caret Line="296" TopLine="276"/>
       </Position24>
       <Position25>
         <Filename Value="octopus.pas"/>
-        <Caret Line="132" TopLine="115"/>
+        <Caret Line="292" TopLine="276"/>
       </Position25>
       <Position26>
         <Filename Value="octopus.pas"/>
-        <Caret Line="133" TopLine="115"/>
+        <Caret Line="309" TopLine="281"/>
       </Position26>
       <Position27>
         <Filename Value="octopus.pas"/>
-        <Caret Line="508" Column="14" TopLine="489"/>
+        <Caret Line="555" Column="17" TopLine="527"/>
       </Position27>
       <Position28>
         <Filename Value="octopus.pas"/>
-        <Caret Line="517" Column="92" TopLine="498"/>
+        <Caret Line="93" Column="17" TopLine="76"/>
       </Position28>
       <Position29>
         <Filename Value="octopus.pas"/>
-        <Caret Line="448" Column="5" TopLine="422"/>
+        <Caret Line="364" Column="27" TopLine="349"/>
       </Position29>
       <Position30>
         <Filename Value="octopus.pas"/>
-        <Caret Line="336" Column="19" TopLine="307"/>
+        <Caret Line="367" Column="34" TopLine="349"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -416,25 +213,5 @@
         <Line Value="11"/>
       </Item1>
     </BreakPoints>
-    <Watches Count="6">
-      <Item1>
-        <Expression Value="yoffset"/>
-      </Item1>
-      <Item2>
-        <Expression Value="price"/>
-      </Item2>
-      <Item3>
-        <Expression Value="pricemin"/>
-      </Item3>
-      <Item4>
-        <Expression Value="yAxisStepHeight"/>
-      </Item4>
-      <Item5>
-        <Expression Value="pricestep"/>
-      </Item5>
-      <Item6>
-        <Expression Value="priceMax"/>
-      </Item6>
-    </Watches>
   </Debugging>
 </CONFIG>
