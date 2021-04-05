@@ -37,7 +37,7 @@ type
     sqlTrans: TSQLTransaction;
     procedure sqlForecastCalcFields(DataSet: TDataSet);
   private
-
+    function kelvinToCelsius(kelvin: float):float;
   public
     procedure getTariffData(em: TEntityListManager);
     function saveData(manager: TEntityListManager):integer;
@@ -54,12 +54,13 @@ implementation
 { Tdm1 }
 
 procedure Tdm1.sqlForecastCalcFields(DataSet: TDataSet);
-var
-  tempKelvin,tempCelsius: double;
 begin
-  tempKelvin:=sqlForecast.FieldByName('temp_max').AsFloat;
-  tempCelsius:=roundTo(tempKelvin - 273.15, 2);
-  sqlForecast.FieldByName('temp_max_norm').AsFloat:=tempCelsius;
+  sqlForecast.FieldByName('temp_max_norm').AsFloat:=kelvinToCelsius(dataset.FieldByName('temp_max').AsFloat);
+end;
+
+function Tdm1.kelvinToCelsius(kelvin: float): float;
+begin
+  result:=roundTo(Kelvin - 273.15, -2);
 end;
 
 procedure Tdm1.getTariffData(em: TEntityListManager);

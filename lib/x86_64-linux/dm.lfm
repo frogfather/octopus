@@ -74,88 +74,7 @@ object dm1: Tdm1
   end
   object sqlForecast: TSQLQuery
     MaxIndexesCount = 4
-    FieldDefs = <    
-      item
-        Name = 'id'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'date_for'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'temp'
-        DataType = ftBCD
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'temp_like'
-        DataType = ftBCD
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'temp_min'
-        DataType = ftBCD
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'temp_max'
-        DataType = ftBCD
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'pressure'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'pressure_sea'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'pressure_ground'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'humidity'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'cloud'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'wind_speed'
-        DataType = ftBCD
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'wind_degrees'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'visibility'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'precip_prob'
-        DataType = ftBCD
-        Precision = -1
-        Size = 2
-      end>
+    FieldDefs = <>
     OnCalcFields = sqlForecastCalcFields
     Database = pqConn
     Transaction = sqlTrans
@@ -334,6 +253,33 @@ object dm1: Tdm1
       FieldKind = fkCalculated
       FieldName = 'temp_max_norm'
       Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecasttemp_min_norm: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'temp_min_norm'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecasttemp_norm: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'temp_norm'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecasttemp_feel_like_norm: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'temp_feel_like_norm'
+      Index = 18
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
