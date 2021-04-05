@@ -62,8 +62,6 @@ begin
   sqlForecast.FieldByName('temp_min_norm').AsFloat:=kelvinToCelsius(dataset.FieldByName('temp_min').AsFloat);
   sqlForecast.FieldByName('temp_norm').AsFloat:=kelvinToCelsius(dataset.FieldByName('temp').AsFloat);
   sqlForecast.FieldByName('temp_feel_like_norm').AsFloat:=kelvinToCelsius(dataset.FieldByName('temp_like').AsFloat);
-
-
 end;
 
 function Tdm1.kelvinToCelsius(kelvin: float): float;
