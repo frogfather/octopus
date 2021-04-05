@@ -24,10 +24,13 @@ type
     sqlForecastpressure_ground: TLongintField;
     sqlForecastpressure_sea: TLongintField;
     sqlForecasttemp: TBCDField;
+    sqlForecasttemp_feel_like_norm: TFloatField;
     sqlForecasttemp_like: TBCDField;
     sqlForecasttemp_max: TBCDField;
     sqlForecasttemp_max_norm: TFloatField;
     sqlForecasttemp_min: TBCDField;
+    sqlForecasttemp_min_norm: TFloatField;
+    sqlForecasttemp_norm: TFloatField;
     sqlForecastvisibility: TLongintField;
     sqlForecastwind_degrees: TLongintField;
     sqlForecastwind_speed: TBCDField;
@@ -56,6 +59,9 @@ implementation
 procedure Tdm1.sqlForecastCalcFields(DataSet: TDataSet);
 begin
   sqlForecast.FieldByName('temp_max_norm').AsFloat:=kelvinToCelsius(dataset.FieldByName('temp_max').AsFloat);
+  sqlForecast.FieldByName('temp_min_norm').AsFloat:=kelvinToCelsius(dataset.FieldByName('temp_min').AsFloat);
+  sqlForecast.FieldByName('temp_norm').AsFloat:=kelvinToCelsius(dataset.FieldByName('temp').AsFloat);
+
 end;
 
 function Tdm1.kelvinToCelsius(kelvin: float): float;
