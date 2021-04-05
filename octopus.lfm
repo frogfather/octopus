@@ -247,11 +247,8 @@ object octopusForm: ToctopusForm
         Color = clWindow
         Columns = <        
           item
-            Title.Caption = 'id'
-            FieldName = 'id'
-          end        
-          item
             Title.Caption = 'Date'
+            Width = 160
             FieldName = 'date_for'
           end        
           item
