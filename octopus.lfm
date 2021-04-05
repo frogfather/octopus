@@ -251,20 +251,8 @@ object octopusForm: ToctopusForm
             FieldName = 'id'
           end        
           item
-            Title.Caption = 'date_for'
+            Title.Caption = 'Date'
             FieldName = 'date_for'
-          end        
-          item
-            Title.Caption = 'temp'
-            FieldName = 'temp'
-          end        
-          item
-            Title.Caption = 'temp_like'
-            FieldName = 'temp_like'
-          end        
-          item
-            Title.Caption = 'temp_min'
-            FieldName = 'temp_min'
           end        
           item
             Title.Caption = 'Temp'
