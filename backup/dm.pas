@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, PQConnection, SQLDB, DB, fpjson, jsonparser, dateutils,
-  entityUtils, tariff;
+  entityUtils, tariff, math;
 
 type
 
@@ -15,10 +15,27 @@ type
   Tdm1 = class(TDataModule)
     dsForecast: TDataSource;
     pqConn: TPQConnection;
+    sqlForecastcloud: TLongintField;
+    sqlForecastdate_for: TDateTimeField;
+    sqlForecasthumidity: TLongintField;
+    sqlForecastid: TLongintField;
+    sqlForecastprecip_prob: TBCDField;
+    sqlForecastpressure: TLongintField;
+    sqlForecastpressure_ground: TLongintField;
+    sqlForecastpressure_sea: TLongintField;
+    sqlForecasttemp: TBCDField;
+    sqlForecasttemp_like: TBCDField;
+    sqlForecasttemp_max: TBCDField;
+    sqlForecasttemp_max_norm: TFloatField;
+    sqlForecasttemp_min: TBCDField;
+    sqlForecastvisibility: TLongintField;
+    sqlForecastwind_degrees: TLongintField;
+    sqlForecastwind_speed: TBCDField;
     sqlLookup: TSQLQuery;
     sqlAdd: TSQLQuery;
     sqlForecast: TSQLQuery;
     sqlTrans: TSQLTransaction;
+    procedure sqlForecastCalcFields(DataSet: TDataSet);
   private
 
   public
@@ -36,6 +53,15 @@ implementation
 
 { Tdm1 }
 
+procedure Tdm1.sqlForecastCalcFields(DataSet: TDataSet);
+var
+  tempKelvin,tempCelsius: double;
+begin
+  tempKelvin:=sqlForecast.FieldByName('temp_max').AsFloat;
+  tempCelsius:=roundTo(tempKelvin - 273.15, 2);
+  sqlForecast.FieldByName('temp_max_norm').AsFloat:=tempCelsius;
+end;
+
 procedure Tdm1.getTariffData(em: TEntityListManager);
 var
   startTime: TDateTime;
@@ -47,7 +73,7 @@ begin
   sqlRender:=TSqlQuery.Create(self);
   sqlRender.DataBase:=pqConn;
   sqlRender.Transaction:=sqlTrans;
-  sqlRender.SQL.Text:='SELECT * FROM tariff where valid_from > '''+formatDateTime('yyyy-mm-dd hh:nn:ss',startTime)+''' order by inc_vat';
+  sqlRender.SQL.Text:='SELECT * FROM tariff where valid_from > '''+formatDateTime('yyyy-mm-dd hh:nn:ss',startTime)+''' order by valid_from';
   sqlRender.Active:=true;
   sqlRender.First;
   while not sqlRender.EOF do

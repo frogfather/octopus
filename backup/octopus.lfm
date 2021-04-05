@@ -1,11 +1,11 @@
 object octopusForm: ToctopusForm
-  Left = 260
+  Left = 262
   Height = 743
-  Top = 23
-  Width = 1058
+  Top = 27
+  Width = 1056
   Caption = 'Octopus'
   ClientHeight = 743
-  ClientWidth = 1058
+  ClientWidth = 1056
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.12.0'
@@ -15,13 +15,13 @@ object octopusForm: ToctopusForm
     Top = 24
     Width = 1058
     TabStop = False
-    ActivePage = PWeather
-    TabIndex = 0
+    ActivePage = PForecast
+    TabIndex = 1
     TabOrder = 0
     object PWeather: TTabSheet
       Caption = 'Current weather'
-      ClientHeight = 674
-      ClientWidth = 1052
+      ClientHeight = 671
+      ClientWidth = 1048
       object pCurrentWeather: TPanel
         Left = 24
         Height = 592
@@ -44,9 +44,9 @@ object octopusForm: ToctopusForm
           TabOrder = 0
           object lHeadline: TLabel
             Left = 344
-            Height = 28
+            Height = 30
             Top = 8
-            Width = 126
+            Width = 135
             Caption = 'Weather for '
             Font.Height = -24
             ParentColor = False
@@ -54,9 +54,9 @@ object octopusForm: ToctopusForm
           end
           object lSummary: TLabel
             Left = 16
-            Height = 28
+            Height = 30
             Top = 56
-            Width = 105
+            Width = 109
             Caption = 'Summary:'
             Font.Height = -24
             ParentColor = False
@@ -64,9 +64,9 @@ object octopusForm: ToctopusForm
           end
           object lDescription: TLabel
             Left = 16
-            Height = 18
+            Height = 20
             Top = 96
-            Width = 87
+            Width = 85
             Caption = 'Description:'
             Font.Height = -16
             ParentColor = False
@@ -74,9 +74,9 @@ object octopusForm: ToctopusForm
           end
           object lTemperature: TLabel
             Left = 320
-            Height = 28
+            Height = 30
             Top = 56
-            Width = 132
+            Width = 142
             Caption = 'temperature:'
             Font.Height = -24
             ParentColor = False
@@ -84,9 +84,9 @@ object octopusForm: ToctopusForm
           end
           object lFeelsLike: TLabel
             Left = 320
-            Height = 18
+            Height = 20
             Top = 96
-            Width = 79
+            Width = 74
             Caption = '(feels like:)'
             Font.Height = -16
             ParentColor = False
@@ -94,7 +94,7 @@ object octopusForm: ToctopusForm
           end
           object lTempMin: TLabel
             Left = 320
-            Height = 18
+            Height = 20
             Top = 124
             Width = 31
             Caption = 'min:'
@@ -104,9 +104,9 @@ object octopusForm: ToctopusForm
           end
           object lTempMax: TLabel
             Left = 320
-            Height = 18
+            Height = 20
             Top = 152
-            Width = 35
+            Width = 34
             Caption = 'max:'
             Font.Height = -16
             ParentColor = False
@@ -114,9 +114,9 @@ object octopusForm: ToctopusForm
           end
           object lWind: TLabel
             Left = 600
-            Height = 28
+            Height = 30
             Top = 56
-            Width = 61
+            Width = 65
             Caption = 'Wind:'
             Font.Height = -24
             ParentColor = False
@@ -124,9 +124,9 @@ object octopusForm: ToctopusForm
           end
           object lWindDegrees: TLabel
             Left = 600
-            Height = 18
+            Height = 20
             Top = 96
-            Width = 63
+            Width = 59
             Caption = 'degrees:'
             Font.Height = -16
             ParentColor = False
@@ -134,9 +134,9 @@ object octopusForm: ToctopusForm
           end
           object lWindGust: TLabel
             Left = 600
-            Height = 18
+            Height = 20
             Top = 124
-            Width = 36
+            Width = 35
             Caption = 'gust:'
             Font.Height = -16
             ParentColor = False
@@ -153,9 +153,9 @@ object octopusForm: ToctopusForm
           TabOrder = 1
           object lPressure: TLabel
             Left = 17
-            Height = 18
+            Height = 20
             Top = 48
-            Width = 68
+            Width = 64
             Caption = 'pressure:'
             Font.Height = -16
             ParentColor = False
@@ -163,7 +163,7 @@ object octopusForm: ToctopusForm
           end
           object lHumidity: TLabel
             Left = 16
-            Height = 18
+            Height = 20
             Top = 76
             Width = 67
             Caption = 'humidity:'
@@ -173,7 +173,7 @@ object octopusForm: ToctopusForm
           end
           object lVisibility: TLabel
             Left = 16
-            Height = 18
+            Height = 20
             Top = 104
             Width = 62
             Caption = 'visibility:'
@@ -183,9 +183,9 @@ object octopusForm: ToctopusForm
           end
           object lCloud: TLabel
             Left = 321
-            Height = 18
+            Height = 20
             Top = 48
-            Width = 145
+            Width = 139
             Caption = 'cloud cover (%age:)'
             Font.Height = -16
             ParentColor = False
@@ -193,9 +193,9 @@ object octopusForm: ToctopusForm
           end
           object lSunrise: TLabel
             Left = 601
-            Height = 18
+            Height = 20
             Top = 48
-            Width = 57
+            Width = 54
             Caption = 'sunrise:'
             Font.Height = -16
             ParentColor = False
@@ -203,9 +203,9 @@ object octopusForm: ToctopusForm
           end
           object lSunset: TLabel
             Left = 601
-            Height = 18
+            Height = 20
             Top = 76
-            Width = 53
+            Width = 50
             Caption = 'sunset:'
             Font.Height = -16
             ParentColor = False
@@ -214,9 +214,9 @@ object octopusForm: ToctopusForm
         end
         object lForecastTime: TLabel
           Left = 48
-          Height = 18
+          Height = 20
           Top = 552
-          Width = 99
+          Width = 96
           Caption = 'Forecast time'
           Font.Height = -16
           ParentColor = False
@@ -224,9 +224,9 @@ object octopusForm: ToctopusForm
         end
         object lTimeNow: TLabel
           Left = 672
-          Height = 18
+          Height = 20
           Top = 552
-          Width = 70
+          Width = 71
           Caption = 'time now:'
           Font.Height = -16
           ParentColor = False
@@ -236,8 +236,8 @@ object octopusForm: ToctopusForm
     end
     object PForecast: TTabSheet
       Caption = 'Forecast'
-      ClientHeight = 674
-      ClientWidth = 1052
+      ClientHeight = 671
+      ClientWidth = 1048
       OnShow = PForecastShow
       object DBGrid1: TDBGrid
         Left = 40
@@ -245,15 +245,79 @@ object octopusForm: ToctopusForm
         Top = 56
         Width = 960
         Color = clWindow
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'id'
+            FieldName = 'id'
+          end        
+          item
+            Title.Caption = 'date_for'
+            FieldName = 'date_for'
+          end        
+          item
+            Title.Caption = 'temp'
+            FieldName = 'temp'
+          end        
+          item
+            Title.Caption = 'temp_like'
+            FieldName = 'temp_like'
+          end        
+          item
+            Title.Caption = 'temp_min'
+            FieldName = 'temp_min'
+          end        
+          item
+            Title.Caption = 'temp_max_norm'
+            FieldName = 'temp_max_norm'
+          end        
+          item
+            Title.Caption = 'temp_max'
+            FieldName = 'temp_max'
+          end        
+          item
+            Title.Caption = 'pressure'
+            FieldName = 'pressure'
+          end        
+          item
+            Title.Caption = 'pressure_sea'
+            FieldName = 'pressure_sea'
+          end        
+          item
+            Title.Caption = 'pressure_ground'
+            FieldName = 'pressure_ground'
+          end        
+          item
+            Title.Caption = 'humidity'
+            FieldName = 'humidity'
+          end        
+          item
+            Title.Caption = 'cloud'
+            FieldName = 'cloud'
+          end        
+          item
+            Title.Caption = 'wind_speed'
+            FieldName = 'wind_speed'
+          end        
+          item
+            Title.Caption = 'wind_degrees'
+            FieldName = 'wind_degrees'
+          end        
+          item
+            Title.Caption = 'visibility'
+            FieldName = 'visibility'
+          end        
+          item
+            Title.Caption = 'precip_prob'
+            FieldName = 'precip_prob'
+          end>
         DataSource = dm1.dsForecast
         TabOrder = 0
       end
     end
     object PTariff: TTabSheet
       Caption = 'Energy Tariffs'
-      ClientHeight = 674
-      ClientWidth = 1052
+      ClientHeight = 671
+      ClientWidth = 1048
       object pbTariff: TPaintBox
         Left = 24
         Height = 529
@@ -264,8 +328,8 @@ object octopusForm: ToctopusForm
     end
     object PSettings: TTabSheet
       Caption = 'Settings'
-      ClientHeight = 674
-      ClientWidth = 1052
+      ClientHeight = 671
+      ClientWidth = 1048
       ParentShowHint = False
       object bSave: TButton
         Left = 952
@@ -290,14 +354,14 @@ object octopusForm: ToctopusForm
         TabOrder = 1
         object eOpenWeatherCity: TEdit
           Left = 16
-          Height = 22
+          Height = 36
           Top = 114
           Width = 256
           TabOrder = 0
         end
         object eOpenWeatherApiKey: TEdit
           Left = 312
-          Height = 22
+          Height = 36
           Top = 114
           Width = 256
           EchoMode = emPassword
@@ -330,9 +394,9 @@ object octopusForm: ToctopusForm
         end
         object Label1: TLabel
           Left = 16
-          Height = 18
+          Height = 20
           Top = 10
-          Width = 180
+          Width = 165
           Caption = 'Open Weather Settings'
           Font.Height = -16
           Font.Style = [fsBold]
@@ -341,7 +405,7 @@ object octopusForm: ToctopusForm
         end
         object eOpenWeatherApi: TEdit
           Left = 16
-          Height = 22
+          Height = 36
           Top = 56
           Width = 945
           OnExit = tePollEditingDone
@@ -361,10 +425,10 @@ object octopusForm: ToctopusForm
         end
         object ckForecast: TCheckBox
           Left = 24
-          Height = 18
+          Height = 23
           Hint = 'If checked, forecast data will be retrieved at the same time as energy tariff data'
           Top = 152
-          Width = 121
+          Width = 139
           Caption = 'Get forecast data'
           Checked = True
           State = cbChecked
@@ -372,9 +436,9 @@ object octopusForm: ToctopusForm
         end
         object ckWeather: TCheckBox
           Left = 24
-          Height = 18
+          Height = 23
           Top = 184
-          Width = 138
+          Width = 162
           Caption = 'Get Current weather'
           Checked = True
           OnChange = ckWeatherChange
@@ -382,34 +446,36 @@ object octopusForm: ToctopusForm
           TabOrder = 4
         end
         object pWeatherSub: TPanel
-          Left = 168
+          Left = 312
           Height = 50
-          Top = 160
+          Top = 157
           Width = 362
           ClientHeight = 50
           ClientWidth = 362
           TabOrder = 5
           object ePollInterval: TEdit
-            Left = 96
-            Height = 22
-            Top = 18
-            Width = 88
+            Left = 104
+            Height = 32
+            Top = 11
+            Width = 80
+            Anchors = []
+            AutoSize = False
             NumbersOnly = True
             TabOrder = 0
           end
           object lWeatherPoll: TLabel
             Left = 8
-            Height = 16
+            Height = 19
             Top = 24
-            Width = 80
+            Width = 87
             Caption = 'refresh every'
             ParentColor = False
           end
           object lWeatherPollMinutes: TLabel
             Left = 192
-            Height = 16
+            Height = 19
             Top = 24
-            Width = 48
+            Width = 53
             Caption = 'minutes'
             ParentColor = False
           end
@@ -428,7 +494,7 @@ object octopusForm: ToctopusForm
         TabOrder = 2
         object eOctopusApi: TEdit
           Left = 16
-          Height = 22
+          Height = 36
           Top = 64
           Width = 945
           OnExit = tePollEditingDone
@@ -448,9 +514,9 @@ object octopusForm: ToctopusForm
         end
         object Label2: TLabel
           Left = 16
-          Height = 18
+          Height = 20
           Top = 10
-          Width = 223
+          Width = 206
           Caption = 'Octopus Agile Tariff Settings'
           Font.Height = -16
           Font.Style = [fsBold]
@@ -459,9 +525,9 @@ object octopusForm: ToctopusForm
         end
         object ckTariff: TCheckBox
           Left = 24
-          Height = 18
+          Height = 23
           Top = 120
-          Width = 102
+          Width = 118
           Caption = 'Get tariff data'
           Checked = True
           State = cbChecked
@@ -480,15 +546,15 @@ object octopusForm: ToctopusForm
         TabOrder = 3
         object lat: TLabel
           Left = 17
-          Height = 16
+          Height = 19
           Top = 54
-          Width = 189
+          Width = 205
           Caption = 'Poll Forecast and Tariff data at:'
           ParentColor = False
         end
         object tePoll: TTimeEdit
           Left = 241
-          Height = 22
+          Height = 36
           Top = 48
           Width = 103
           ButtonWidth = 23
@@ -499,7 +565,7 @@ object octopusForm: ToctopusForm
         end
         object eNextPoll: TEdit
           Left = 361
-          Height = 22
+          Height = 36
           Top = 48
           Width = 511
           TabOrder = 1
@@ -515,9 +581,9 @@ object octopusForm: ToctopusForm
         end
         object lGeneral: TLabel
           Left = 16
-          Height = 18
+          Height = 20
           Top = 10
-          Width = 67
+          Width = 64
           Caption = 'Poll time'
           Font.Height = -16
           Font.Style = [fsBold]
@@ -527,9 +593,9 @@ object octopusForm: ToctopusForm
       end
       object Label3: TLabel
         Left = 416
-        Height = 38
+        Height = 39
         Top = 72
-        Width = 114
+        Width = 119
         Caption = 'Settings'
         Font.Height = -32
         ParentColor = False
@@ -538,15 +604,17 @@ object octopusForm: ToctopusForm
     end
     object PLog: TTabSheet
       Caption = 'Logs'
-      ClientHeight = 674
-      ClientWidth = 1052
+      ClientHeight = 671
+      ClientWidth = 1048
       object lbResults: TListBox
         Left = 40
         Height = 592
         Top = 48
         Width = 956
         ItemHeight = 0
+        ScrollWidth = 954
         TabOrder = 0
+        TopIndex = -1
       end
     end
   end

@@ -17,8 +17,6 @@
         <ComponentName Value="octopusForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="367"/>
         <CursorPos X="128" Y="393"/>
         <UsageCount Value="631"/>
         <Loaded Value="True"/>
@@ -30,11 +28,13 @@
         <ComponentName Value="dm1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="28"/>
-        <CursorPos X="139" Y="50"/>
+        <TopLine Value="36"/>
+        <CursorPos X="46" Y="61"/>
         <UsageCount Value="626"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="entityutils.pas"/>
@@ -79,123 +79,122 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="octopus.pas"/>
-        <Caret Line="295" TopLine="276"/>
+        <Caret Line="296" TopLine="276"/>
       </Position1>
       <Position2>
         <Filename Value="octopus.pas"/>
-        <Caret Line="296" TopLine="276"/>
+        <Caret Line="292" TopLine="276"/>
       </Position2>
       <Position3>
         <Filename Value="octopus.pas"/>
-        <Caret Line="297" TopLine="276"/>
+        <Caret Line="309" TopLine="281"/>
       </Position3>
       <Position4>
         <Filename Value="octopus.pas"/>
-        <Caret Line="292" TopLine="276"/>
+        <Caret Line="310" TopLine="282"/>
       </Position4>
       <Position5>
         <Filename Value="octopus.pas"/>
-        <Caret Line="294" TopLine="276"/>
+        <Caret Line="284" TopLine="276"/>
       </Position5>
       <Position6>
         <Filename Value="octopus.pas"/>
-        <Caret Line="295" TopLine="276"/>
+        <Caret Line="286" TopLine="276"/>
       </Position6>
       <Position7>
         <Filename Value="octopus.pas"/>
-        <Caret Line="296" TopLine="276"/>
+        <Caret Line="288" TopLine="276"/>
       </Position7>
       <Position8>
         <Filename Value="octopus.pas"/>
-        <Caret Line="292" TopLine="276"/>
+        <Caret Line="290" TopLine="276"/>
       </Position8>
       <Position9>
         <Filename Value="octopus.pas"/>
-        <Caret Line="309" TopLine="281"/>
+        <Caret Line="291" TopLine="276"/>
       </Position9>
       <Position10>
         <Filename Value="octopus.pas"/>
-        <Caret Line="310" TopLine="282"/>
+        <Caret Line="292" TopLine="276"/>
       </Position10>
       <Position11>
         <Filename Value="octopus.pas"/>
-        <Caret Line="284" TopLine="276"/>
+        <Caret Line="294" TopLine="276"/>
       </Position11>
       <Position12>
         <Filename Value="octopus.pas"/>
-        <Caret Line="286" TopLine="276"/>
+        <Caret Line="295" TopLine="276"/>
       </Position12>
       <Position13>
         <Filename Value="octopus.pas"/>
-        <Caret Line="288" TopLine="276"/>
+        <Caret Line="296" TopLine="276"/>
       </Position13>
       <Position14>
         <Filename Value="octopus.pas"/>
-        <Caret Line="290" TopLine="276"/>
+        <Caret Line="297" TopLine="276"/>
       </Position14>
       <Position15>
         <Filename Value="octopus.pas"/>
-        <Caret Line="291" TopLine="276"/>
+        <Caret Line="292" TopLine="276"/>
       </Position15>
       <Position16>
         <Filename Value="octopus.pas"/>
-        <Caret Line="292" TopLine="276"/>
+        <Caret Line="294" TopLine="276"/>
       </Position16>
       <Position17>
         <Filename Value="octopus.pas"/>
-        <Caret Line="294" TopLine="276"/>
+        <Caret Line="295" TopLine="276"/>
       </Position17>
       <Position18>
         <Filename Value="octopus.pas"/>
-        <Caret Line="295" TopLine="276"/>
+        <Caret Line="296" TopLine="276"/>
       </Position18>
       <Position19>
         <Filename Value="octopus.pas"/>
-        <Caret Line="296" TopLine="276"/>
+        <Caret Line="292" TopLine="276"/>
       </Position19>
       <Position20>
         <Filename Value="octopus.pas"/>
-        <Caret Line="297" TopLine="276"/>
+        <Caret Line="309" TopLine="281"/>
       </Position20>
       <Position21>
         <Filename Value="octopus.pas"/>
-        <Caret Line="292" TopLine="276"/>
+        <Caret Line="555" Column="17" TopLine="527"/>
       </Position21>
       <Position22>
         <Filename Value="octopus.pas"/>
-        <Caret Line="294" TopLine="276"/>
+        <Caret Line="93" Column="17" TopLine="76"/>
       </Position22>
       <Position23>
         <Filename Value="octopus.pas"/>
-        <Caret Line="295" TopLine="276"/>
+        <Caret Line="364" Column="27" TopLine="349"/>
       </Position23>
       <Position24>
         <Filename Value="octopus.pas"/>
-        <Caret Line="296" TopLine="276"/>
+        <Caret Line="367" Column="34" TopLine="349"/>
       </Position24>
       <Position25>
         <Filename Value="octopus.pas"/>
-        <Caret Line="292" TopLine="276"/>
+        <Caret Line="393" Column="128"/>
       </Position25>
       <Position26>
-        <Filename Value="octopus.pas"/>
-        <Caret Line="309" TopLine="281"/>
+        <Filename Value="dm.pas"/>
       </Position26>
       <Position27>
-        <Filename Value="octopus.pas"/>
-        <Caret Line="555" Column="17" TopLine="527"/>
+        <Filename Value="dm.pas"/>
+        <Caret Line="92" Column="3" TopLine="84"/>
       </Position27>
       <Position28>
-        <Filename Value="octopus.pas"/>
-        <Caret Line="93" Column="17" TopLine="76"/>
+        <Filename Value="dm.pas"/>
+        <Caret Line="58" Column="57" TopLine="56"/>
       </Position28>
       <Position29>
-        <Filename Value="octopus.pas"/>
-        <Caret Line="364" Column="27" TopLine="349"/>
+        <Filename Value="dm.pas"/>
+        <Caret Line="61" Column="30" TopLine="41"/>
       </Position29>
       <Position30>
-        <Filename Value="octopus.pas"/>
-        <Caret Line="367" Column="34" TopLine="349"/>
+        <Filename Value="dm.pas"/>
+        <Caret Line="58" Column="33" TopLine="40"/>
       </Position30>
     </JumpHistory>
     <RunParams>

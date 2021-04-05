@@ -245,7 +245,71 @@ object octopusForm: ToctopusForm
         Top = 56
         Width = 960
         Color = clWindow
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'id'
+            FieldName = 'id'
+          end        
+          item
+            Title.Caption = 'date_for'
+            FieldName = 'date_for'
+          end        
+          item
+            Title.Caption = 'temp'
+            FieldName = 'temp'
+          end        
+          item
+            Title.Caption = 'temp_like'
+            FieldName = 'temp_like'
+          end        
+          item
+            Title.Caption = 'temp_min'
+            FieldName = 'temp_min'
+          end        
+          item
+            Title.Caption = 'Temp max'
+            FieldName = 'temp_max_norm'
+          end        
+          item
+            Title.Caption = 'temp_max'
+            FieldName = 'temp_max'
+          end        
+          item
+            Title.Caption = 'pressure'
+            FieldName = 'pressure'
+          end        
+          item
+            Title.Caption = 'pressure_sea'
+            FieldName = 'pressure_sea'
+          end        
+          item
+            Title.Caption = 'pressure_ground'
+            FieldName = 'pressure_ground'
+          end        
+          item
+            Title.Caption = 'humidity'
+            FieldName = 'humidity'
+          end        
+          item
+            Title.Caption = 'cloud'
+            FieldName = 'cloud'
+          end        
+          item
+            Title.Caption = 'wind_speed'
+            FieldName = 'wind_speed'
+          end        
+          item
+            Title.Caption = 'wind_degrees'
+            FieldName = 'wind_degrees'
+          end        
+          item
+            Title.Caption = 'visibility'
+            FieldName = 'visibility'
+          end        
+          item
+            Title.Caption = 'precip_prob'
+            FieldName = 'precip_prob'
+          end>
         DataSource = dm1.dsForecast
         TabOrder = 0
       end

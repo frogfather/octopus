@@ -130,7 +130,6 @@ begin
   userDir:=getUserDir;
 
   fileName:=userDir+'/.octopus.csv';
-  lbresults.items.add('filename set to '+filename);
   readSettings;
   getCurrentWeather;
 end;
@@ -144,22 +143,18 @@ var
 begin
   directoryList:=TStringlist.create;
   userDir:=getCurrentDir;
-  lbresults.items.add('getCurrentDir returns '+userDir);
   if (userDir <> '/') then
     begin
     //if the correct path is returned the config file will be where the executable is
     result:=userDir
     end else
     begin
-    lbresults.items.add('finding directories in root');
      directoryList:= findDIrectories('/');
      if (directoryList.IndexOf('Users') > -1) then
        chdir('Users');
-       lbresults.items.add('finding directories in Users');
        directoryList:=findDirectories('Users/');
        if (directoryList.IndexOf('Shared') > -1) then directoryList.Delete(directorylist.IndexOf('Shared'));
        //now if we have one user we can select it, otherwise we need to ask
-       lbresults.items.add('there are '+inttostr(directoryList.Count)+' users');
        if (directoryList.Count = 1) then userDir := directoryList[0] else
          for index:=0 to directoryList.count -1 do
          begin
@@ -175,7 +170,6 @@ begin
            application.Terminate;
          end;
        result:='/Users/'+userDir;
-       lbresults.items.add('user dir is '+result);
     end;
 
 end;
@@ -315,6 +309,7 @@ begin
       MainTimer.Enabled:=(length(eOctopusApi.text) > 0) or (length(eOpenWeatherApi.Text)> 0);
       WeatherTimer.Interval:=(strToInt(epollInterval.text)*60000);
       WeatherTimer.Enabled:=ckWeather.Enabled;
+      lbresults.Items.add('['+formatdatetime('yyyy-mm-dd hh:nn:ss',now)+'] Settings read');
     except
       on e: Exception do messagedlg('','Error loading settings '+e.Message, mtError, [mbOK],'');
     end;
@@ -332,6 +327,7 @@ var
 begin
   try
     apiPollString:=formatDateTime('hh:nn:ss',tePoll.Time);
+    lbresults.Items.add('['+formatdatetime('yyyy-mm-dd hh:nn:ss',now)+'] Settings written');
   except
     apiPollString:=formatDateTime('hh:nn:ss',now);
   end;
@@ -365,7 +361,11 @@ begin
   HTTP.AddHeader('User-Agent', 'Mozilla/5.0 (compatible; fpweb)');
   HTTP.AddHeader('Content-Type', 'application/json');
   try
+    try
     result:=HTTP.Get(api);
+    except
+    on E : Exception do lbresults.Items.add('['+formatdatetime('yyyy-mm-dd hh:nn:ss',now)+'] error making api call '+E.Message);
+    end;
   finally
     http.free;
   end;
@@ -390,7 +390,7 @@ begin
     newTariff:=TTariff.create(jTariffItem);
     tariffs.AddEntity(newTariff);
     end;
-  lbresults.items.add('['+formatDateTime('yyyy-mm-dd hh:nn:ss', now)+'] Added '+inttostr(dm1.saveData(tariffs))+' records');
+  lbresults.items.add('['+formatDateTime('yyyy-mm-dd hh:nn:ss', now)+'] Added '+inttostr(dm1.saveData(tariffs))+' Octopus Agile records');
 end;
 
 procedure ToctopusForm.processOpenWeatherForecastData(data: TJSONObject);
@@ -411,7 +411,7 @@ begin
     newForecast:=TForecast.create(JForecastItem);
     forecasts.AddEntity(newForecast);
     end;
-  lbresults.items.add('['+formatDateTime('yyyy-mm-dd hh:nn:ss', now)+'] Added '+inttostr(dm1.saveData(forecasts))+' records');
+  lbresults.items.add('['+formatDateTime('yyyy-mm-dd hh:nn:ss', now)+'] Added '+inttostr(dm1.saveData(forecasts))+' weather forecast records');
 end;
 
 procedure ToctopusForm.processOpenWeatherCurrentData(data: TJSONObject);

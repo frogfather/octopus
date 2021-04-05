@@ -73,7 +73,90 @@ object dm1: Tdm1
     Top = 98
   end
   object sqlForecast: TSQLQuery
-    FieldDefs = <>
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'date_for'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'temp'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'temp_like'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'temp_min'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'temp_max'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'pressure'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'pressure_sea'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'pressure_ground'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'humidity'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'cloud'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'wind_speed'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'wind_degrees'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'visibility'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'precip_prob'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end>
+    OnCalcFields = sqlForecastCalcFields
     Database = pqConn
     Transaction = sqlTrans
     SQL.Strings = (
@@ -82,6 +165,180 @@ object dm1: Tdm1
     Params = <>
     Left = 280
     Top = 98
+    object sqlForecastid: TLongintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecastdate_for: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'date_for'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecasttemp: TBCDField
+      FieldKind = fkData
+      FieldName = 'temp'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqlForecasttemp_like: TBCDField
+      FieldKind = fkData
+      FieldName = 'temp_like'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqlForecasttemp_min: TBCDField
+      FieldKind = fkData
+      FieldName = 'temp_min'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqlForecasttemp_max: TBCDField
+      FieldKind = fkData
+      FieldName = 'temp_max'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqlForecastpressure: TLongintField
+      FieldKind = fkData
+      FieldName = 'pressure'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecastpressure_sea: TLongintField
+      FieldKind = fkData
+      FieldName = 'pressure_sea'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecastpressure_ground: TLongintField
+      FieldKind = fkData
+      FieldName = 'pressure_ground'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecasthumidity: TLongintField
+      FieldKind = fkData
+      FieldName = 'humidity'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecastcloud: TLongintField
+      FieldKind = fkData
+      FieldName = 'cloud'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecastwind_speed: TBCDField
+      FieldKind = fkData
+      FieldName = 'wind_speed'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqlForecastwind_degrees: TLongintField
+      FieldKind = fkData
+      FieldName = 'wind_degrees'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecastvisibility: TLongintField
+      FieldKind = fkData
+      FieldName = 'visibility'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlForecastprecip_prob: TBCDField
+      FieldKind = fkData
+      FieldName = 'precip_prob'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqlForecasttemp_max_norm: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'temp_max_norm'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object dsForecast: TDataSource
     DataSet = sqlForecast
