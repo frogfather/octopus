@@ -15,8 +15,8 @@ object octopusForm: ToctopusForm
     Top = 24
     Width = 1058
     TabStop = False
-    ActivePage = PWeather
-    TabIndex = 0
+    ActivePage = PForecast
+    TabIndex = 1
     TabOrder = 0
     object PWeather: TTabSheet
       Caption = 'Current weather'
@@ -267,12 +267,20 @@ object octopusForm: ToctopusForm
             FieldName = 'temp_min'
           end        
           item
+            Title.Caption = 'Temp'
+            FieldName = 'temp_norm'
+          end        
+          item
             Title.Caption = 'Max temp'
             FieldName = 'temp_max_norm'
           end        
           item
             Title.Caption = 'Min temp'
             FieldName = 'temp_min_norm'
+          end        
+          item
+            Title.Caption = 'Feels like'
+            FieldName = 'temp_feel_like_norm'
           end        
           item
             Title.Caption = 'pressure'

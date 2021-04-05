@@ -267,6 +267,10 @@ object octopusForm: ToctopusForm
             FieldName = 'temp_min'
           end        
           item
+            Title.Caption = 'Temp'
+            FieldName = 'temp_norm'
+          end        
+          item
             Title.Caption = 'Max temp'
             FieldName = 'temp_max_norm'
           end        
